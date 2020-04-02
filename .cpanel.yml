@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/stonepla/vp.stoneplayground.com/
+    - /bin/cp -R * $DEPLOYPATH
