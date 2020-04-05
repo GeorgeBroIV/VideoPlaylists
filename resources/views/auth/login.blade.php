@@ -73,11 +73,8 @@
 				@endguest
 	            @auth
 	            <div id="divProviderLogin" class="card-body">
-		            <p>Hi {{ \Illuminate\Support\Facades\Auth::user()->firstname }}, welcome to the {{ env
-		            ('APP_NAME')  }} 'Service Provider'
-			            login area.</p>
-		            <p>Now that you've logged in to our site, you have the option to log into additional service
-			            providers.  This will be useful if you wish to have access to content.</p>
+		            <p>Hi {{ \Illuminate\Support\Facades\Auth::user()->firstname }}, welcome to the <strong>{{ env('APP_NAME') }}</strong> 'Service Provider' login area.</p>
+		            <p>Now that you've logged in to our site, you have the option to log into additional service providers.  This will be useful if you wish to have access to content.</p>
 		            <div align="center">
 			            <span id="socialProviders">
 			            <a href="{{ route('social.oauth', 'facebook') }}" class="btn btn-default">
