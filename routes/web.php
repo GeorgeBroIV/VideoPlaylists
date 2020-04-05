@@ -14,13 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('auth/social', 'Auth\LoginController@show')->name('social.login');
-Route::get('oauth/{driver}', 'Auth\LoginController@redirectToProvider')->name('social.oauth');
-Route::get('oauth/{driver}/callback', 'Auth\LoginController@handleProviderCallback')->name('social.callback');
+Route::get('auth/social', 'Auth\LoginProviderController@show')->name('social.login');
+Route::get('oauth/{driver}', 'Auth\LoginProviderController@redirectToProvider')->name('social.oauth');
+Route::get('oauth/{driver}/callback', 'Auth\LoginProviderController@handleProviderCallback')->name('social.callback');
+
+Route::get('loginprovider','Auth\LoginProviderController@show')->name('loginprovider');
+	
+// This route handles what would normally result in an untrapped error
+// (e.g. a user right-clicking "Logout" and opening in a new tab).
+Route::get('logout', 'Auth\LogoutController@logout')->name('logout');
+// This route triggers during a normal logout process.
+Route::post('logout', 'Auth\LogoutController@logout')->name('logout');
