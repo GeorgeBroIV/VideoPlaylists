@@ -3,32 +3,35 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request as Request;
 
 use App\User;
+use App\Providers;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
+use Illuminate\Support\Facades\DB;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginProviderController extends Controller
 {
-	protected $providers = [
-		'github', 'facebook', 'google', 'twitter'
-	];
-
-	public function show()
+	public function index()
 	{
-		return view('auth.login');
+        $providers = DB::table('providers')
+            ->where('active', '=', '1')
+            ->get();
+	    return view('auth.loginprovider', compact('providers'));
 	}
 
-	public function redirectToProvider($driver) {
-		if (!$this->isProviderAllowed($driver)) {
+	public function show(Request $request) {
+        $driver = $request->get('id');
+ddd($driver);
+	    if (!$this->isProviderAllowed($driver)) {
 			return $this->sendFailedResponse("{$driver} is not currently supported");
 		}
-		
+
 		try {
 			return Socialite::driver($driver)->redirect();
 		} catch (Exception $e) {
@@ -48,21 +51,21 @@ class LoginProviderController extends Controller
 			? $this->sendFailedResponse("No email id returned from {$driver} provider.")
 			: $this->loginOrCreateAccount($user, $driver);
 	}
-	
+
 	protected function sendSuccessResponse()
 	{
 		return redirect()->intended('home');
 	}
-	
+
 	protected function sendFailedResponse($msg = null) {
 		return redirect()->route('social.login')
 		    ->withErrors(['msg' => $msg ?: 'Unable to login, try with another provider to login.']);
 	}
-	
+
 	private function isProviderAllowed($driver) {
 		return in_array($driver, $this->providers) && config()->has("services.{$driver}");
 	}
-	
+
 	protected function loginOrCreateAccount($providerUser, $driver) {
 		// check for already has account
 		$user = User::where('email', $providerUser->getEmail())->first();

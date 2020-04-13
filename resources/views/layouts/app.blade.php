@@ -52,7 +52,7 @@
 	                    
 	                    @auth
 		                    <li class="nav-item">
-			                    <a class="nav-link" href="{{ route('loginprovider') }}">{{ __('Provider Login') }}</a>
+			                    <a class="nav-link" href="{{ route('loginprovider') }}">{{ __('Social Login') }}</a>
 		                    </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

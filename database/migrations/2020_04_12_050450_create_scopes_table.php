@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserProvidersTable extends Migration
+class CreateScopesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateUserProvidersTable extends Migration
      */
     public function up()
     {
-        Schema::create('user__providers', function (Blueprint $table) {
+        Schema::create('scopes', function (Blueprint $table) {
             $table->id();
+            $table->string('scope');
+            $table->string('scopedescription');
+            $table->boolean('active');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateUserProvidersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user__providers');
+        Schema::dropIfExists('scopes');
     }
 }

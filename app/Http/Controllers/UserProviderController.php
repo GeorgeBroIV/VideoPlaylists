@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User_Provider;
+use App\user_provider;
 use Illuminate\Http\Request;
 
 class UserProviderController extends Controller
@@ -41,10 +41,10 @@ class UserProviderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\User_Provider  $user_Provider
+     * @param  \App\user_provider  $user_provider
      * @return \Illuminate\Http\Response
      */
-    public function show(User_Provider $user_Provider)
+    public function show(user_provider $user_provider)
     {
         //
     }
@@ -52,10 +52,10 @@ class UserProviderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User_Provider  $user_Provider
+     * @param  \App\user_provider  $user_provider
      * @return \Illuminate\Http\Response
      */
-    public function edit(User_Provider $user_Provider)
+    public function edit(user_provider $user_provider)
     {
         //
     }
@@ -64,10 +64,10 @@ class UserProviderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User_Provider  $user_Provider
+     * @param  \App\user_provider  $user_provider
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User_Provider $user_Provider)
+    public function update(Request $request, user_provider $user_provider)
     {
         //
     }
@@ -75,10 +75,10 @@ class UserProviderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\User_Provider  $user_Provider
+     * @param  \App\user_provider  $user_provider
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User_Provider $user_Provider)
+    public function destroy(user_provider $user_provider)
     {
         //
     }

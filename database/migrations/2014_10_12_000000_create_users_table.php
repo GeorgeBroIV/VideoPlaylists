@@ -20,13 +20,8 @@ class CreateUsersTable extends Migration
 	        $table->string('userid')->unique();
             $table->string('email')->unique();
             $table->string('password');
-	
-	        $table->string('avatar')->nullable();
-	        $table->string('provider', 20)->nullable();
-	        $table->string('provider_id')->nullable();
-	        $table->string('access_token')->nullable();
-            
-            $table->rememberToken();
+            $table->boolean('active')->default(1);
+            $table->boolean('admin')->default(0);
             $table->timestamps();
         });
     }

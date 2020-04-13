@@ -21,10 +21,8 @@ class User extends Authenticatable
 	    'userid',
 	    'email',
 	    'password',
-	    'avatar',
-	    'provider_id',
-	    'provider',
-	    'access_token'
+	    'active',
+	    'admin',
     ];
 	protected $guarded = ['*'];
     /**
@@ -33,7 +31,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
     ];
 
     /**
@@ -41,7 +39,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $casts = [
-        'email_verified_at' => 'datetime',
+    
     ];
+
 }

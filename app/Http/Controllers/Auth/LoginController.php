@@ -2,11 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use Exception;
-use Illuminate\Support\Facades\Auth;
-use Laravel\Socialite\Facades\Socialite;
-
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;

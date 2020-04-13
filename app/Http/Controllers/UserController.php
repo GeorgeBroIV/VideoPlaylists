@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Provider;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class ProviderController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,8 @@ class ProviderController extends Controller
      */
     public function index()
     {
-        $providers = DB::table('providers')->get();
-        return view ('provider.index', compact('providers'));
+	    $users = \App\User::all();
+	    return view ('user.index', compact('users'));
     }
 
     /**
@@ -26,7 +24,7 @@ class ProviderController extends Controller
      */
     public function create()
     {
-        return view('customer.create');
+        //
     }
 
     /**
@@ -43,21 +41,22 @@ class ProviderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Provider  $provider
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Provider $provider)
+    public function show()
     {
-        //
+	    $users = auth()->user();
+	    return view ('user.show', compact('users'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Provider  $provider
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Provider $provider)
+    public function edit($id)
     {
         //
     }
@@ -66,10 +65,10 @@ class ProviderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Provider  $provider
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Provider $provider)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -77,10 +76,10 @@ class ProviderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Provider  $provider
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Provider $provider)
+    public function destroy($id)
     {
         //
     }
