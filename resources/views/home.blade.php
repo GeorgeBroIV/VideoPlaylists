@@ -19,7 +19,7 @@
 	                </div>
 	            </div>
 		        <p></p>
-		        <div class="card">
+		        <div class="  card">
 			        <div class="card-header">
 				        {{ env('APP_NAME') }} Home Page
 			        </div>

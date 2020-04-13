@@ -10,28 +10,33 @@
                     </div>
                     <div id="divProviderLogin" class="card-body">
                         <p>Hi {{ \Illuminate\Support\Facades\Auth::user()->firstname }}, welcome to the <strong>{{ env('APP_NAME') }}</strong> 'Social Provider' login area.</p>
-                        <p>Now that you've logged in to our site, you have the option to log into additional service providers.  This will be useful if you wish to have access to content.</p>
+                        <p>Now that you've logged in to our site, you have the option to log into additional service providers by clicking on the
+                            @if(count($providers) > 1)
+                                buttons
+                            @else
+                                button
+                            @endif
+                            below.  This will be useful if you wish to have access to content.</p>
                         <div align="center">
-
-                <!-- at_if(!empty($providers)) -->
-                            <form method="POST" action="{{ route('social.oauth') }}">
-                                @csrf
-                                @foreach($providers as $provider)
-                                    <span id="socialProviders">
-                                                            <button id="{{ $provider->provider }}" name="{{ $provider->provider }}" type="submit" class="btn btn-default">
-                                                                {{ __($provider->providerfriendly) }}
-                                                            </button>
-                                                        </span>
-                                @endforeach
-                            </form>
-                <!-- at_else -->
-                            <h4>
-                                Currently there are no active social providers available.
-                            </h4>
-                            <h5>
-                                Please check back soon!
-                            </h5>
-                <!-- at_endif -->
+                            @if(isset($providers))
+                                <form method="POST" action="{{ route('social.oauth') }}">
+                                    @csrf
+                                    @foreach($providers as $provider)
+                                        <span id="socialProviders">
+                                            <button id="{{ $provider->provider }}" name="{{ $provider->provider }}" type="submit" class="btn btn-default">
+                                                <img height="35px" src="./img/Button-{{ $provider->providerfriendly }}-bg-out.png">
+                                            </button>
+                                        </span>
+                                    @endforeach
+                                </form>
+                            @else
+                                <h4>
+                                    Currently there are no active social providers available.
+                                </h4>
+                                <h5>
+                                    Please check back soon!
+                                </h5>
+                            @endif
                         </div>
                     </div>
                 </div>

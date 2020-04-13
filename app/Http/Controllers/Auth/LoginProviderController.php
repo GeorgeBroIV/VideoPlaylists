@@ -22,7 +22,12 @@ class LoginProviderController extends Controller
         $providers = DB::table('providers')
             ->where('active', '=', '1')
             ->get();
-	    return view('auth.loginprovider', compact('providers'));
+
+        if($providers->count() == 0)
+        {
+            $providers = null;
+        }
+        return view('auth.loginprovider', compact('providers'));
 	}
 
 	public function show(Request $request) {
