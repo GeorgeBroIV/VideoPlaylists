@@ -28,4 +28,16 @@
         }
     </script>
 
+    @php
+    $service = new Google_Service_YouTube($client);
+
+    $queryParams = [
+        'maxResults' => 25,
+        'mine' => true
+    ];
+
+    $response = $service->playlists->listPlaylists('snippet,contentDetails', $queryParams);
+    print_r($response);
+    @endphp
+
 @endsection
