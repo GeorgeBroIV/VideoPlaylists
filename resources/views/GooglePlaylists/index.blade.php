@@ -36,7 +36,7 @@
                 function(err) { console.error("Execute error", err); });
     }
     gapi.load("client:auth2", function() {
-        gapi.auth2.init({client_id:{{ env('GOOGLE_CLIENT_ID') }}});
+        gapi.auth2.init({client_id: "{{ env("GOOGLE_CLIENT_ID") }}"});
     });
 </script>
 <button onclick="authenticate().then(loadClient)">authorize and load</button>
