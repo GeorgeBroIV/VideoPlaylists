@@ -27,7 +27,7 @@
                                     @csrf
                                     @foreach($providers as $provider)
                                         <span id="socialProviders">
-                                            <button id="{{ $provider->provider }}" name="{{ $provider->provider }}" type="submit" class="btn btn-default">
+                                            <button id="{{ $provider->provider }}" name="{{ $provider->provider }}" type="submit" formmethod="post" class="btn btn-default">
                                                 <img height="30px" src="./img/Button-{{ $provider->providerfriendly }}-bg-out.png">
                                             </button>
                                         </span>

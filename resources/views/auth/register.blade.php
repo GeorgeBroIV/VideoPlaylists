@@ -5,12 +5,21 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
+                <div class="card-header">
+                    {{ __('Register') }}
+                </div>
+                <div class="card-body">
+                    <p class="text-md-left">
+                        Welcome to our {{ env('APP_NAME') }} web application.
+                    </p>
+                    <p class="text-md-left">
+                        When you register with us, you will have the option to log in with various Social Providers (Google, etc) to incorporate streamlined features of these providers into this web application.
+                    </p>
+                </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-	
+
 	                    <div class="form-group row">
 		                    <label for="firstname" class="col-md-4 col-form-label text-md-right">
 			                        {{ __('First Name') }}

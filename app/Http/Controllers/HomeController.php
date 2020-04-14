@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // Populate $users array with current WebApp user info to personalize View
+        $user = Auth::user();
+
+        // Return a View that has access to populated arrays
+        return view('home', compact('user'));
     }
 }

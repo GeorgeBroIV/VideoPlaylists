@@ -14,8 +14,12 @@
 	                            {{ session('status') }}
 	                        </div>
 	                    @endif
-                        <p>Hi {{ Auth()->user()->firstname }}, you are now logged into the <strong>{{ env('APP_NAME') }}</strong> web application.</p>
-                        <p>You can now log into additional Social Providers (Google, etc) to incorporate streamlined features of these providers into this web application by clicking the 'Social Login' button.</p>
+                        <p>
+                            Hi {{ $user->firstname }}, you are now logged into the <strong>{{ env('APP_NAME') }}</strong> web application.
+                        </p>
+                        <p>
+                            You can now log into additional Social Providers (Google, etc) to incorporate streamlined features of these providers into this web application by clicking the 'Social Login' button.
+                        </p>
 	                </div>
 	            </div>
 		        <p></p>

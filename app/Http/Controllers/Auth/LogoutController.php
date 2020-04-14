@@ -11,7 +11,13 @@ class LogoutController extends Controller
 {
 	public function logout()
 	{
+        // Populate $users array with current WebApp user info to personalize View
+	    $user = Auth::user();
+
+	    // Logout the current WebApp user
 		Auth::logout();
-		return view('auth.logout');
+
+        // Return a View that has access to populated arrays
+		return view('auth.logout', compact('user'));
 	}
 }

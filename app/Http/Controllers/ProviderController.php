@@ -15,6 +15,7 @@ class ProviderController extends Controller
      */
     public function index()
     {
+        // Lists all providers
         $providers = DB::table('providers')->get();
         return view ('provider.index', compact('providers'));
     }
@@ -26,7 +27,7 @@ class ProviderController extends Controller
      */
     public function create()
     {
-        return view('customer.create');
+        // Future use: web-based addition of providers
     }
 
     /**
@@ -37,7 +38,7 @@ class ProviderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Future use: web-based DB insert of created providers
     }
 
     /**
@@ -48,7 +49,7 @@ class ProviderController extends Controller
      */
     public function show(Provider $provider)
     {
-        //
+        // Future use: web-based show a selected provider
     }
 
     /**
@@ -59,7 +60,7 @@ class ProviderController extends Controller
      */
     public function edit(Provider $provider)
     {
-        //
+        // Future use: web-based edit a selected provider
     }
 
     /**
@@ -71,7 +72,7 @@ class ProviderController extends Controller
      */
     public function update(Request $request, Provider $provider)
     {
-        //
+        // Future use: web-based DB update of selected provider
     }
 
     /**
@@ -82,6 +83,6 @@ class ProviderController extends Controller
      */
     public function destroy(Provider $provider)
     {
-        //
+        // Future use: web-based DB delete (ideally soft-delete) of selected provider
     }
 }

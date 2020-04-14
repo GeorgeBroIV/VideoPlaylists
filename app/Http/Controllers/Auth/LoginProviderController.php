@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+// TODO Compact these class dependency injections once this Controller is refactored to be RESTFUL
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request as Request;
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use App\User;
 use App\Providers;
 use Exception;
@@ -19,20 +23,31 @@ class LoginProviderController extends Controller
 {
 	public function index()
 	{
+	    // Populate $users array with current WebApp user info to personalize View
+	    $users = Auth::user();
+
+	    // Populate $providers array for use in View
         $providers = DB::table('providers')
             ->where('active', '=', '1')
             ->get();
 
+        // Set $providers array to null if no records, helpful for View conditional content display
         if($providers->count() == 0)
         {
             $providers = null;
         }
-        return view('auth.loginprovider', compact('providers'));
+
+        // Return a View that has access to populated arrays
+        return view('loginprovider.index', compact('providers', 'users'));
 	}
 
+// TODO Parse out the following logic to applicable areas to refactor this Controller to be RESTFUL
+
 	public function show(Request $request) {
-        $driver = $request->get('id');
-ddd($driver);
+
+        $keys = array_keys($_POST);
+        $driver = $keys[1];
+
 	    if (!$this->isProviderAllowed($driver)) {
 			return $this->sendFailedResponse("{$driver} is not currently supported");
 		}
@@ -68,7 +83,16 @@ ddd($driver);
 	}
 
 	private function isProviderAllowed($driver) {
-		return in_array($driver, $this->providers) && config()->has("services.{$driver}");
+        $allproviders = DB::table('providers')
+            ->select('provider')
+            ->where('active', '=', '1')
+            ->get();
+        $providers = [];
+        foreach($allproviders as $allprovider)
+        {
+            array_push($providers, $allprovider->provider);
+        }
+		return in_array($driver, $providers) && config()->has("services.{$driver}");
 	}
 
 	protected function loginOrCreateAccount($providerUser, $driver) {

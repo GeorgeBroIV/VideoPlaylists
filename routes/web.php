@@ -15,25 +15,22 @@ use Illuminate\Support\Facades\Route;
 //  Routes WebApp authentication to the Auth resource controller
     Auth::routes();
 
-//  Routes WebApp unauthenticated users to 'Welcome'
-    Route::resource('/', 'WelcomeController');
-
-	Route::resource('/welcome', 'WelcomeController');
+//  BaseURI 'Welcome Page'
+    Route::get('/', 'WelcomeController@index');
+	Route::get('/welcome', 'WelcomeController@index')->name('welcome');
 
 //  Named routes https://laravel.com/docs/7.x/routing#named-routes
 	Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
-//  This route handles what would normally result in an untrapped error
-//  (e.g. a user right-clicking "Logout" and opening in a new tab).
+//  The 'get' route handles what would normally result in an untrapped error (e.g. a user right-clicking "Logout" and opening in a new tab).
 	Route::get('/logout', 'Auth\LogoutController@logout')->name('logout');
-//  This route triggers during a normal logout process.
 	Route::post('/logout', 'Auth\LogoutController@logout')->name('logout');
 
 //  Routes WebApp 'users' requests (user information CRUD)
 Route::resource('/users', 'UserController')->middleware('auth');
 
 //  Routes WebApp 'providers' requests
-Route::get('/providers', 'ProviderController@index')->middleware('auth');
+Route::get('/providers', 'ProviderController@index')->middleware('auth')->name('providers');
 
 //  Routes WebApp 'loginprovider' requests (user information CRUD)
 Route::get('/loginprovider','Auth\LoginProviderController@index')->name('loginprovider')->middleware('auth');
