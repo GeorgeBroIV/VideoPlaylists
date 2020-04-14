@@ -46,6 +46,7 @@ class LoginProviderController extends Controller
 	public function show(Request $request) {
 
         $keys = array_keys($_POST);
+//        ddd(array_keys($_POST));
         $driver = $keys[1];
 
 	    if (!$this->isProviderAllowed($driver)) {
@@ -128,7 +129,7 @@ class LoginProviderController extends Controller
 			}
 		}
 		// login the user
-		Auth::login($user, true);
+//		Auth::login($user, true);
 		return $this->sendSuccessResponse();
 	}
 }

@@ -41,8 +41,11 @@ Route::get('/loginprovider','Auth\LoginProviderController@index')->name('loginpr
 |--------------------------------------------------------------------------
 */
 
-Route::get('auth/social', 'Auth\LoginProviderController@show')->name('social.login');
-Route::post('oauth', 'Auth\LoginProviderController@show')->name('social.oauth');
-Route::get('oauth/{driver}/callback', 'Auth\LoginProviderController@handleProviderCallback')->name('social.callback');
+Route::get('/auth/social', 'Auth\LoginProviderController@show')->name('social.login');
+Route::post('/oauth', 'Auth\LoginProviderController@show')->name('social.oauth');
+Route::get('/oauth/{driver}/callback', 'Auth\LoginProviderController@handleProviderCallback')->name('social.callback');
+
+//  Test Route for Google Login Button
+    Route::get('/google', 'GetGooglePlaylistsController@index');
 
 //  Route::get('/providers/create', 'ProviderController@create');
