@@ -34,7 +34,7 @@
                 function(err) { console.error("Execute error", err); });
     }
     gapi.load("client:auth2", function() {
-        gapi.auth2.init({client_id: "<?php $id=env("GOOGLE_CLIENT_ID"); ?>"});
+        gapi.auth2.init({client_id: "<?php env('GOOGLE_CLIENT_ID'); ?>"});
     });
 </script>
 </head>
