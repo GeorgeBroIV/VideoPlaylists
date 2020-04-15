@@ -69,8 +69,8 @@ class LoginProviderController extends Controller
         // other providers and select desired (logged-in) Provider API's / scopes for functionality.
 //ddd($socialUsers);
 //        return redirect()->route('social.login');
-        return view ('loginprovider.index', compact('socialUsers'));
-
+//        return view ('loginprovider.index', compact('socialUsers'));
+        return view ('loginprovider.index');
 //  This is helpful if we were to use Social Authentication for our WebApp login.
 //		return empty($user->email)
 //			? $this->sendFailedResponse("No email id returned from {$driver} provider.")
