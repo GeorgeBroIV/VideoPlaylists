@@ -60,6 +60,7 @@ class LoginProviderController extends Controller
         // This method is called from the Social Provider Callback route
 		try {
 			$socialUsers = Socialite::driver($driver)->user();
+ddd($socialUsers);
 		} catch (Exception $e) {
 			return $this->sendFailedResponse($e->getMessage());
 		}
