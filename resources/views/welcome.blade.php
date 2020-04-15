@@ -83,7 +83,18 @@
                 <div class="title m-b-md">
                     Video Playlists
                 </div>
-
+                <div class="card-header" style="font-size: 25px">
+                    @auth
+                        Click 'Home' to continue your experience!
+                    @else
+                        Login or Register to start your experience!
+                    @endauth
+                </div>
+                <br><br><br>
+                <div class="card-text">
+                    Some useful developer links
+                </div>
+                <br>
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>

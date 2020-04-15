@@ -12,7 +12,7 @@
 						<div class="card-body">
 								<table>
                                     @include('provider.tablehead')
-									@foreach($providers as $provider)
+									    @foreach($providers as $provider)
 										<tr>
                                             <td style="padding-left: 10px; padding-right: 10px">
                                                 {{ $provider->provider }}
@@ -22,7 +22,9 @@
 											</td>
                                             <td align="center" style="padding-left: 10px; padding-right: 10px">
                                                 @if($provider->scopes == 1)
-                                                    Yes
+                                                    <a href="{{ route('scopes') }}">
+                                                        Yes
+                                                    </a>
                                                 @else
                                                     No
                                                 @endif
