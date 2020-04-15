@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 
 class LoginProviderController extends Controller
 {
@@ -60,6 +61,8 @@ class LoginProviderController extends Controller
         // This method is called from the Social Provider Callback route
 //		try {
 			$socialUsers = Socialite::driver($driver)->user();
+			$socialToken = Socialite::driver($driver)->userFromToken($token);
+
 //		} catch (Exception $e) {
 //			return $this->sendFailedResponse($e->getMessage());
 //		}
@@ -67,7 +70,7 @@ class LoginProviderController extends Controller
         // This returns user data, and now we can open up API functionality
         // Perhaps this could return back to the WebApp 'Social Login' view to log into
         // other providers and select desired (logged-in) Provider API's / scopes for functionality.
-ddd($socialUsers);
+ddd($socialToken);
 //        return redirect()->route('social.login');
 //        return view ('loginprovider.index', compact('socialUsers'));
 
