@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 class Provider extends Model
 {
 	use Notifiable;
-	
+
 	/**
 	 * The attributes that are mass assignable.
 	 *
@@ -19,8 +19,10 @@ class Provider extends Model
 	protected $fillable = [
 		'provider',
 		'providerfriendly',
+        'api',
 		'scopes',
 		'active',
+        'notes',
 	];
 	protected $guarded = ['*'];
 	/**
@@ -31,17 +33,17 @@ class Provider extends Model
 	protected $hidden = [
 		'password', 'remember_token',
 	];
-	
+
 	/**
 	 * The attributes that should be cast to native types.
 	 *
 	 * @var array
 	 */
-	
+
 	protected $casts = [
 		'email_verified_at' => 'datetime',
 	];
-	
+
 	/**
 	 * Check to see if the user is logged into any Providers (Google, Twitter, etc).
 	 *

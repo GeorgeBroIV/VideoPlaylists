@@ -14,12 +14,12 @@
                                     @include('provider.tablehead')
 									    @foreach($providers as $provider)
 										<tr>
-                                            <td style="padding-left: 10px; padding-right: 10px">
-                                                {{ $provider->provider }}
-                                            </td>
 											<td style="padding-left: 10px; padding-right: 10px">
 												{{ $provider->providerfriendly }}
 											</td>
+                                            <td style="padding-left: 10px; padding-right: 10px">
+                                                {{ $provider->api }}
+                                            </td>
                                             <td align="center" style="padding-left: 10px; padding-right: 10px">
                                                 @if($provider->scopes == 1)
                                                     <a href="{{ route('scopes') }}">
@@ -35,6 +35,9 @@
                                                 @else
                                                     No
                                                 @endif
+                                            </td>
+                                            <td style="padding-left: 10px; padding-right: 10px">
+                                                {{ $provider->notes }}
                                             </td>
                                             <td align="center" style="padding-left: 10px; padding-right: 10px">
                                                 Edit

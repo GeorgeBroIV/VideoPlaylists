@@ -17,8 +17,11 @@ class CreateProvidersTable extends Migration
             $table->id();
             $table->string('provider')->unique();
             $table->string('providerfriendly');
-	        $table->boolean('active')->default(1);
+            $table->string('api');
             $table->boolean('scopes')->default(0);
+            $table->boolean('active')->default(1);
+            $table->text('notes');
+            $table->timestamps();
 
 //  TODO providers migration under development
 	        $table->string('avatar')->nullable();
@@ -26,8 +29,6 @@ class CreateProvidersTable extends Migration
 	        $table->string('provider_id')->nullable();
 	        $table->string('access_token')->nullable();
 	        $table->rememberToken();
-
-            $table->timestamps();
         });
     }
 
