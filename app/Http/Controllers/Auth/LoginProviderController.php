@@ -58,17 +58,18 @@ class LoginProviderController extends Controller
 
 	public function handleProviderCallback($driver) {
         // This method is called from the Social Provider Callback route
-		try {
-			$socialUsers = Socialite::driver($driver)->user();
-		} catch (Exception $e) {
-			return $this->sendFailedResponse($e->getMessage());
-		}
+//		try {
+//			$socialUsers = Socialite::driver($driver)->user();
+//		} catch (Exception $e) {
+//			return $this->sendFailedResponse($e->getMessage());
+//		}
 		// TODO Social Callback return -> redirect to a view (Social Login?)
         // This returns user data, and now we can open up API functionality
         // Perhaps this could return back to the WebApp 'Social Login' view to log into
         // other providers and select desired (logged-in) Provider API's / scopes for functionality.
+//ddd($socialUsers);
 //        return redirect()->route('social.login');
-        return view ('loginprovider.index');
+        return view ('loginprovider.index', compact('socialUsers'));
 
 //  This is helpful if we were to use Social Authentication for our WebApp login.
 //		return empty($user->email)
