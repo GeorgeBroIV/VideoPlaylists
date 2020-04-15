@@ -54,7 +54,7 @@ use Illuminate\Support\Facades\Route;
     Route::post('/oauth', 'Auth\LoginProviderController@show')->name('social.oauth');
 
     // Social Provider Callback
-    Route::get('/oauth/{driver}/callback', 'Auth\LoginProviderController@handleProviderCallback')->name('social.callback');
-
+//    Route::get('/oauth/{driver}/callback', 'Auth\LoginProviderController@handleProviderCallback')->name('social.callback');
+    Route::get('/oauth/{driver}/callback', 'Auth\LoginProviderController@index')->name('social.callback');
     // Test Route for Google Login Button
 //  Route::get('/google', 'GetGooglePlaylistsController@index');
