@@ -17,4 +17,7 @@
 	<th align="center" style="padding-left: 10px; padding-right: 10px">
 		Admin
 	</th>
+    <th align="center" style="padding-left: 10px; padding-right: 10px">
+        Action
+    </th>
 </tr>

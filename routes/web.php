@@ -32,6 +32,9 @@ Route::resource('/users', 'UserController')->middleware('auth');
 //  Routes WebApp 'providers' requests
 Route::get('/providers', 'ProviderController@index')->middleware('auth')->name('providers');
 
+//  Routes WebApp 'scopes' requests
+Route::get('/scopes', 'ScopeController@index')->middleware('auth')->name('scopes');
+
 //  Routes WebApp 'loginprovider' requests (user information CRUD)
 Route::get('/loginprovider','Auth\LoginProviderController@index')->name('loginprovider')->middleware('auth');
 

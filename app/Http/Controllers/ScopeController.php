@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Scope;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ScopeController extends Controller
 {
@@ -14,7 +16,21 @@ class ScopeController extends Controller
      */
     public function index()
     {
-        //
+        // Populate $users array with current WebApp user info to personalize View
+        $users = Auth::user();
+
+        // Populate $providers array for use in View
+        $scopes = DB::table('scopes')
+            ->get();
+
+        // Set $providers array to null if no records, helpful for View conditional content display
+        if($scopes->count() == 0)
+        {
+            $scopes = null;
+        }
+
+        // Return a View that has access to populated arrays
+        return view('scopes.index', compact('scopes', 'users'));
     }
 
     /**

@@ -15,9 +15,15 @@ class CreateScopesTable extends Migration
     {
         Schema::create('scopes', function (Blueprint $table) {
             $table->id();
-            $table->string('scope');
-            $table->string('scopedescription');
+            $table->string('provider');
+            $table->string('api');
+            $table->string('apiVer');
+            $table->string('scopeShort');
+            $table->string('scopeFull');
+            $table->string('description');
             $table->boolean('active');
+            $table->boolean('interested');
+            $table->text('notes');
             $table->timestamps();
         });
     }

@@ -56,6 +56,12 @@
                                     {{ __('Social Providers') }}
                                 </a>
                             </li>
+                            <!-- Sample -->
+                            <li>
+                                <a class="nav-link" href="{{ route('scopes') }}">
+                                    {{ __('API Scopes') }}
+                                </a>
+                            </li>
 <!-- END - ADMIN Section -->
 
 <!-- START - AUTH USER Section -->
