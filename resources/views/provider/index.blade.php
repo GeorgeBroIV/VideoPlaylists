@@ -17,8 +17,14 @@
 											<td style="padding-left: 10px; padding-right: 10px">
 												{{ $provider->providerfriendly }}
 											</td>
-                                            <td style="padding-left: 10px; padding-right: 10px">
-                                                {{ $provider->api }}
+                                            <td align="center" style="padding-left: 10px; padding-right: 10px">
+                                                @if($provider->api == 1)
+                                                    <a href="{{ route('scopes') }}">
+                                                        Yes
+                                                    </a>
+                                                @else
+                                                    No
+                                                @endif
                                             </td>
                                             <td align="center" style="padding-left: 10px; padding-right: 10px">
                                                 @if($provider->scopes == 1)
