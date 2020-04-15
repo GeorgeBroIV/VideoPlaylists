@@ -81,7 +81,7 @@ class LoginProviderController extends Controller
 //		return empty($user->email)
 //			? $this->sendFailedResponse("No email id returned from {$driver} provider.")
 //			: $this->loginOrCreateAccount($user, $driver);
-        redirect('https://www.StonePlayground.com/loginproviders');
+        return;
 	}
 
 	protected function sendFailedResponse($msg = null) {
