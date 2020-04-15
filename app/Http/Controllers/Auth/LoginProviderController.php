@@ -59,7 +59,7 @@ class LoginProviderController extends Controller
 	public function handleProviderCallback($driver) {
         // This method is called from the Social Provider Callback route
 //		try {
-//			$socialUsers = Socialite::driver($driver)->user();
+			$socialUsers = Socialite::driver($driver)->user();
 //		} catch (Exception $e) {
 //			return $this->sendFailedResponse($e->getMessage());
 //		}
