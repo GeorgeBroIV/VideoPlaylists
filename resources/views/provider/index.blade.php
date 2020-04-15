@@ -19,7 +19,7 @@
 											</td>
                                             <td align="center" style="padding-left: 10px; padding-right: 10px">
                                                 @if($provider->api == 1)
-                                                    <a href="{{ route('scopes') }}">
+                                                    <a href="{{ route('api') }}">
                                                         Yes
                                                     </a>
                                                 @else
