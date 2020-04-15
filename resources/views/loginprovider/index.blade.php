@@ -33,6 +33,19 @@
                                         </span>
                                     @endforeach
                                 </form>
+
+
+                                @if (isset($socialUser))
+                                    <table>
+                                        <tr>
+                                            @foreach($socialUser as $socialUser)
+                                                <td>{{ $socialUser }}</td>
+                                            @endforeach
+                                        </tr>
+                                    </table>
+                                @endif
+
+
                             @else
                                 <h4>
                                     Currently there are no active social providers available.

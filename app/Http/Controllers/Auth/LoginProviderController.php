@@ -35,9 +35,13 @@ class LoginProviderController extends Controller
 // TODO Parse out the following logic to applicable areas to refactor this Controller to be RESTFUL
 
 	public function show(Request $request) {
+    // This method uses Laravel Socialite to log into the Social Provider
+    // Invoked by both 'User Click' to login to Social Provider (1 route) and also by the 'SendFailedResponse' function within this method
+    // Why?  Figure out this logic.
+    // ALSO, a parameter could be passed into this method which would cleanup the SLOPPY code below.
 
+	    // SLOPPY - look up better way to obtain and parse out the social provider from the recordset
         $keys = array_keys($_POST);
-//        ddd(array_keys($_POST));
         $driver = $keys[1];
 
 	    if (!$this->isProviderAllowed($driver)) {
@@ -45,53 +49,67 @@ class LoginProviderController extends Controller
 		}
 
 		try {
-			return Socialite::driver($driver)->redirect();
+            // This is what logs the user into the Social Provider
+		    return Socialite::driver($driver)->redirect();
 		} catch (Exception $e) {
-			// You should show something simple fail message
 			return $this->sendFailedResponse($e->getMessage());
 		}
 	}
 
 	public function handleProviderCallback($driver) {
+        // This method is called from the Social Provider Callback route
 		try {
-			$user = Socialite::driver($driver)->user();
+			$socialUsers = Socialite::driver($driver)->user();
 		} catch (Exception $e) {
 			return $this->sendFailedResponse($e->getMessage());
 		}
-		// check for email in returned user
-		return empty($user->email)
-			? $this->sendFailedResponse("No email id returned from {$driver} provider.")
-			: $this->loginOrCreateAccount($user, $driver);
-	}
+		// TODO Social Callback return -> redirect to a view (Social Login?)
+        // This returns user data, and now we can open up API functionality
+        // Perhaps this could return back to the WebApp 'Social Login' view to log into
+        // other providers and select desired (logged-in) Provider API's / scopes for functionality.
+        return view('loginprovider.index', compact('socialUsers'));
 
-	protected function sendSuccessResponse()
-	{
-		return redirect()->intended('home');
+//  This is helpful if we were to use Social Authentication for our WebApp login.
+//		return empty($user->email)
+//			? $this->sendFailedResponse("No email id returned from {$driver} provider.")
+//			: $this->loginOrCreateAccount($user, $driver);
 	}
 
 	protected function sendFailedResponse($msg = null) {
+	// why does this call a route that redirects back to the this controller's "Show" method
+    // and not the WebApp Social Login page?
 		return redirect()->route('social.login')
 		    ->withErrors(['msg' => $msg ?: 'Unable to login, try with another provider to login.']);
 	}
 
 	private function isProviderAllowed($driver) {
+        // SLOPPY - CLEAN UP
+	    // This pulls all active Social Providers from the database
         $allproviders = DB::table('providers')
             ->select('provider')
             ->where('active', '=', '1')
             ->get();
+        // This adds Active providers to the $providers array
         $providers = [];
         foreach($allproviders as $allprovider)
         {
             array_push($providers, $allprovider->provider);
         }
-		return in_array($driver, $providers) && config()->has("services.{$driver}");
+
+        // Test to see if the requested Provider ($driver) is
+        // in the $provider array AND
+        // is setup in config/services.php (API client_id, client_secret, redirect URI)
+        $isAllowed = in_array($driver, $providers) && config()->has("services.{$driver}");
+
+		return $isAllowed;
 	}
 
 	protected function loginOrCreateAccount($providerUser, $driver) {
-		// check for already has account
+		// We don't need this functionality YET since we are not intending
+        // to use Social Provider authentication to log into the WebApp
 		$user = User::where('email', $providerUser->getEmail())->first();
-
-// if user already found
+// TODO Scrape Social Callback User Info to Update DB from this code
+        // if user already found
 		if ($user) {
 			// update the avatar and provider that might have changed
 			$user->update(
@@ -103,7 +121,8 @@ class LoginProviderController extends Controller
 				]
 			);
 		} else {
-			if ($providerUser->getEmail()) { //Check email exists or not. If exists create a new user
+			if ($providerUser->getEmail()) {
+			    //Check email exists or not. If exists create a new user
 				$user = User::create(
 					[
 						'name' => $providerUser->getName(),
@@ -123,4 +142,10 @@ class LoginProviderController extends Controller
 //		Auth::login($user, true);
 		return $this->sendSuccessResponse();
 	}
+
+    protected function sendSuccessResponse()
+    {
+        // Called from "LoginorCreate"
+        return redirect()->intended('home');
+    }
 }
