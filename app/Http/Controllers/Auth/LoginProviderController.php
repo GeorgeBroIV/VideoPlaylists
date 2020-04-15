@@ -81,7 +81,7 @@ class LoginProviderController extends Controller
 //		return empty($user->email)
 //			? $this->sendFailedResponse("No email id returned from {$driver} provider.")
 //			: $this->loginOrCreateAccount($user, $driver);
-        return;
+        return redirect()->to('/loginprovider');
 	}
 
 	protected function sendFailedResponse($msg = null) {
