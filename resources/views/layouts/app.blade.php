@@ -58,6 +58,11 @@
                             </li>
                             <!-- Sample -->
                             <li>
+                                <a class="nav-link" href="{{ route('api') }}">
+                                    {{ __('API\'s') }}
+                                </a>
+                            <!-- Sample -->
+                            <li>
                                 <a class="nav-link" href="{{ route('scopes') }}">
                                     {{ __('API Scopes') }}
                                 </a>

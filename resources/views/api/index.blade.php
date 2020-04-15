@@ -7,47 +7,38 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        API Scopes
+                        Provider API's
                     </div>
                     <div class="card-body">
                         <table>
-                            @include('scopes.tablehead')
-                            @foreach($scopes as $scope)
+                            @include('api.tablehead')
+                            @foreach($apis as $api)
                                 <tr>
                                     <td style="padding-left: 5px; padding-right: 5px">
-                                        {{ $scope->provider }}
+                                        {{ $api->provider }}
                                     </td>
                                     <td style="padding-left: 5px; padding-right: 5px">
-                                        {{ $scope->api }}
+                                        {{ $api->name }}
                                     </td>
                                     <td style="padding-left: 5px; padding-right: 5px">
-                                        {{ $scope->apiVer }}
+                                        {{ $api->apiVer }}
                                     </td>
-                                    <td style="padding-left: 5px; padding-right: 5px; word-wrap: break-word; max-width: 75px">
-                                        {{ $scope->scopeShort }}
-                                    </td>
-                                    <td style="padding-left: 5px; padding-right: 5px; word-wrap: break-word; max-width: 150px">
-                                        {{ $scope->scopeFull }}
-                                    </td>
-                                    <td style="padding-left: 5px; padding-right: 5px; word-wrap: break-word; width: 200px; max-width: 300px">
-                                        {{ $scope->description }}
+                                    <td style="padding-left: 5px; padding-right: 5px; word-wrap: break-word; width: 200px; max-width: 200px">
+                                        {{ $api->notes }}
                                     </td>
                                     <td align="center" style="padding-left: 5px; padding-right: 5px">
-                                        @if($scope->active == 1)
+                                        @if($api->active == 1)
                                             Yes
                                         @else
                                             No
                                         @endif
                                     </td>
                                     <td align="center" style="padding-left: 5px; padding-right: 5px">
-                                        @if($scope->interested == 1)
+                                        @if($api->interested == 1)
                                             Yes
                                         @else
                                             No
                                         @endif
-                                    </td>
-                                    <td style="padding-left: 5px; padding-right: 5px">
-                                        {{ $scope->notes }}
                                     </td>
                                     <td align="center" style="padding-left: 5px; padding-right: 5px">
                                         Edit
