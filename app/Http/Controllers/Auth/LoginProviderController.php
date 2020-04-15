@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
+use Illuminate\Http;
 
 class LoginProviderController extends Controller
 {
@@ -80,6 +81,7 @@ class LoginProviderController extends Controller
 //		return empty($user->email)
 //			? $this->sendFailedResponse("No email id returned from {$driver} provider.")
 //			: $this->loginOrCreateAccount($user, $driver);
+        redirect('https://www.StonePlayground.com/loginproviders');
 	}
 
 	protected function sendFailedResponse($msg = null) {
