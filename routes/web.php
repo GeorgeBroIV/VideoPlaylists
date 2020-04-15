@@ -27,19 +27,19 @@ use Illuminate\Support\Facades\Route;
 	Route::post('/logout', 'Auth\LogoutController@logout')->name('logout');
 
 //  Routes WebApp 'users' requests (user information CRUD)
-Route::resource('/users', 'UserController')->middleware('auth');
+    Route::resource('/users', 'UserController')->middleware('auth');
 
 //  Routes WebApp 'providers' requests
-Route::get('/providers', 'ProviderController@index')->middleware('auth')->name('providers');
+    Route::get('/providers', 'ProviderController@index')->middleware('auth')->name('providers');
 
 //  Routes WebApp 'api' requests
-Route::get('/api', 'APIController@index')->middleware('auth')->name('api');
+    Route::get('/api', 'APIController@index')->middleware('auth')->name('api');
 
 //  Routes WebApp 'scopes' requests
-Route::get('/scopes', 'ScopeController@index')->middleware('auth')->name('scopes');
+    Route::get('/scopes', 'ScopeController@index')->middleware('auth')->name('scopes');
 
 //  Routes WebApp 'loginprovider' requests (user information CRUD)
-Route::get('/loginprovider','Auth\LoginProviderController@index')->name('loginprovider')->middleware('auth');
+    Route::get('/loginprovider','Auth\LoginProviderController@index')->name('loginprovider')->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -47,11 +47,11 @@ Route::get('/loginprovider','Auth\LoginProviderController@index')->name('loginpr
 |--------------------------------------------------------------------------
 */
 
-Route::get('/auth/social', 'Auth\LoginProviderController@show')->name('social.login');
-Route::post('/oauth', 'Auth\LoginProviderController@show')->name('social.oauth');
-Route::get('/oauth/{driver}/callback', 'Auth\LoginProviderController@handleProviderCallback')->name('social.callback');
+    Route::get('/auth/social', 'Auth\LoginProviderController@show')->name('social.login');
+    Route::post('/oauth', 'Auth\LoginProviderController@show')->name('social.oauth');
+    Route::get('/oauth/{driver}/callback', 'Auth\LoginProviderController@handleProviderCallback')->name('social.callback');
 
 //  Test Route for Google Login Button
-    Route::get('/google', 'GetGooglePlaylistsController@index');
+//    Route::get('/google', 'GetGooglePlaylistsController@index');
 
 //  Route::get('/providers/create', 'ProviderController@create');

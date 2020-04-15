@@ -2,22 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-// TODO Compact these class dependency injections once this Controller is refactored to be RESTFUL
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request as Request;
-
-use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 use App\User;
-use App\Providers;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
-
 use Illuminate\Support\Facades\DB;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginProviderController extends Controller
 {

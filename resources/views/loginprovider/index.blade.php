@@ -10,7 +10,7 @@
                     </div>
                     <div id="divProviderLogin" class="card-body">
                         <p>
-                            Hi {{ $users->firstname }}, welcome to the <strong>{{ env('APP_NAME') }}</strong> 'Social Provider' login area.
+                            Hi {{ $users->firstname }}, welcome to the {{ env('APP_NAME') }} 'Social Provider' login area.
                         </p>
                         <p>
                             Now that you've logged in to our site, you have the option to log into additional service providers by clicking on the
@@ -27,7 +27,7 @@
                                     @csrf
                                     @foreach($providers as $provider)
                                         <span id="socialProviders">
-                                            <button id="{{ $provider->provider }}" name="{{ $provider->provider }}" type="submit" formmethod="post" class="btn btn-default">
+                                            <button id="{{ $provider->provider }}" name="{{ $provider->provider }}" type="submit" class="btn btn-default">
                                                 <img height="30px" src="./img/Button-{{ $provider->providerfriendly }}-bg-out.png">
                                             </button>
                                         </span>
