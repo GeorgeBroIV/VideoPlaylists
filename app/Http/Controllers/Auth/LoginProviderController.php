@@ -51,7 +51,9 @@ class LoginProviderController extends Controller
 
 		try {
             // This is what logs the user into the Social Provider
-		    return Socialite::driver($driver)->redirect();
+		    return Socialite::driver($driver)
+                ->scopes(['openid', 'profile', 'email', 'https://www.googleapis.com/auth/youtube.readonly'])
+                ->redirect();
 		} catch (Exception $e) {
 			return $this->sendFailedResponse($e->getMessage());
 		}
