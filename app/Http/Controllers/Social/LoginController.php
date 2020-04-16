@@ -31,7 +31,7 @@ class LoginController extends Controller
         }
 
         // Return a View that has access to populated arrays
-        return view('loginprovider.index', compact('providers', 'users'));
+        return view('provider.index', compact('providers', 'users'));
 	}
 
 // TODO Parse out the following logic to applicable areas to refactor this Controller to be RESTFUL
