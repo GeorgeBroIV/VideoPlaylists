@@ -89,8 +89,8 @@ $socials = (array)$socialUsers;
 //        Session()->flashInput($socialUsers);
 
 
-
-        return redirect()->to('/loginprovider')->withInput($socials);
+        return redirect()->withInput(compact('socials'))->to('/loginprovider');
+//        return redirect()->to('/loginprovider')->withInput($socials);
 	}
 
 	protected function sendFailedResponse($msg = null) {
