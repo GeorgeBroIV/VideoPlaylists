@@ -72,7 +72,7 @@ class LoginController extends Controller
 		} catch (Exception $e) {
 			return $this->sendFailedResponse($e->getMessage());
 		}
-		ddd(Arr::pluck($socialUsers,'user.family_name'));
+		ddd(Arr::get($socialUsers,'user.sub'));
             $google_user = new GoogleUser;
 //            $google_user->vpEmail = Auth::user()->email;
             $google_user->token = Arr::get($socialUsers,'token');
