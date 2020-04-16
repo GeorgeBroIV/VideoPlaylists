@@ -35,15 +35,7 @@
                                 </form>
 
 
-                                @if ($socials)
-                                    <table>
-                                        <tr>
-                                            @foreach($socials as $social)
-                                                <td>{{ $social }}</td>
-                                            @endforeach
-                                        </tr>
-                                    </table>
-                                @endif
+
 
 
                             @else
