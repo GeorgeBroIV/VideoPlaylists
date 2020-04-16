@@ -90,11 +90,8 @@ class LoginController extends Controller
 
 //        return view ($url . 'auth.provider.index', compact('socialUsers'));
 //        Session()->flashInput($socialUsers);
-$sesSocialUsers = new \Illuminate\Support\Facades\Session();
 
-
-$sesSocialUsers->put($socialUsers);
-return redirect()->to('/loginprovider');
+return redirect()->to('/loginprovider')->with($socialUsers);
 		//        return redirect()->to('/loginprovider')->withInput($socialUsers);
 //        return redirect()->to('/loginprovider')->withInput($socials);
 	}
