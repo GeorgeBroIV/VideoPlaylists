@@ -27,7 +27,7 @@ class GoogleUser extends Model
         'userId',
         'userVerified_email',
         'userLink',
-        'userAvatar_original'
+        'avatar_original'
     ];
     /**
      * @var array|\ArrayAccess|mixed
@@ -52,5 +52,5 @@ class GoogleUser extends Model
         private $userId;
         private $userVerified_email;
         private $userLink;
-        private $userAvatar_original;
+        private $avatar_original;
 }

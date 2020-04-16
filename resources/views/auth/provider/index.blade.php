@@ -34,7 +34,7 @@
                                     @endforeach
                                 </form>
 
-@if(session()->exists('social'))
+@if(session()->exists('Google'))
 <h1>Session</h1>
     @endif
 

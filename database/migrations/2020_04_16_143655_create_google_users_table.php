@@ -35,7 +35,7 @@ class CreateGoogleUsersTable extends Migration
             $table->string('userId');
             $table->string('userVerified_email');
             $table->string('userLink');
-            $table->string('userAvatar_original');
+            $table->string('avatar_original');
             $table->timestamps();
         });
     }
