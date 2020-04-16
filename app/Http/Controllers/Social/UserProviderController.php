@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Social;
 
-use App\Scope;
+use App\Http\Controllers\Controller;
+use App\user_provider;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
-class ScopeController extends Controller
+class UserProviderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,21 +15,7 @@ class ScopeController extends Controller
      */
     public function index()
     {
-        // Populate $users array with current WebApp user info to personalize View
-        $users = Auth::user();
-
-        // Populate $providers array for use in View
-        $scopes = DB::table('scopes')
-            ->get();
-
-        // Set $providers array to null if no records, helpful for View conditional content display
-        if($scopes->count() == 0)
-        {
-            $scopes = null;
-        }
-
-        // Return a View that has access to populated arrays
-        return view('scopes.index', compact('scopes', 'users'));
+        //
     }
 
     /**
@@ -57,10 +42,10 @@ class ScopeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Scope  $scope
+     * @param  \App\user_provider  $user_provider
      * @return \Illuminate\Http\Response
      */
-    public function show(Scope $scope)
+    public function show(user_provider $user_provider)
     {
         //
     }
@@ -68,10 +53,10 @@ class ScopeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Scope  $scope
+     * @param  \App\user_provider  $user_provider
      * @return \Illuminate\Http\Response
      */
-    public function edit(Scope $scope)
+    public function edit(user_provider $user_provider)
     {
         //
     }
@@ -80,10 +65,10 @@ class ScopeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Scope  $scope
+     * @param  \App\user_provider  $user_provider
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Scope $scope)
+    public function update(Request $request, user_provider $user_provider)
     {
         //
     }
@@ -91,10 +76,10 @@ class ScopeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Scope  $scope
+     * @param  \App\user_provider  $user_provider
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Scope $scope)
+    public function destroy(user_provider $user_provider)
     {
         //
     }

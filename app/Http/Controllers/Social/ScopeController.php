@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Social;
 
-use App\Provider;
+use App\Http\Controllers\Controller;
+use App\Scope;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class ProviderController extends Controller
+class ScopeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +17,21 @@ class ProviderController extends Controller
      */
     public function index()
     {
-        // Lists all providers
-        $providers = DB::table('providers')->get();
-        return view ('provider.index', compact('providers'));
+        // Populate $users array with current WebApp user info to personalize View
+        $users = Auth::user();
+
+        // Populate $providers array for use in View
+        $scopes = DB::table('scopes')
+            ->get();
+
+        // Set $providers array to null if no records, helpful for View conditional content display
+        if($scopes->count() == 0)
+        {
+            $scopes = null;
+        }
+
+        // Return a View that has access to populated arrays
+        return view('scopes.index', compact('scopes', 'users'));
     }
 
     /**
@@ -27,7 +41,7 @@ class ProviderController extends Controller
      */
     public function create()
     {
-        // Future use: web-based addition of providers
+        //
     }
 
     /**
@@ -38,51 +52,51 @@ class ProviderController extends Controller
      */
     public function store(Request $request)
     {
-        // Future use: web-based DB insert of created providers
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Provider  $provider
+     * @param  \App\Scope  $scope
      * @return \Illuminate\Http\Response
      */
-    public function show(Provider $provider)
+    public function show(Scope $scope)
     {
-        // Future use: web-based show a selected provider
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Provider  $provider
+     * @param  \App\Scope  $scope
      * @return \Illuminate\Http\Response
      */
-    public function edit(Provider $provider)
+    public function edit(Scope $scope)
     {
-        // Future use: web-based edit a selected provider
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Provider  $provider
+     * @param  \App\Scope  $scope
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Provider $provider)
+    public function update(Request $request, Scope $scope)
     {
-        // Future use: web-based DB update of selected provider
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Provider  $provider
+     * @param  \App\Scope  $scope
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Provider $provider)
+    public function destroy(Scope $scope)
     {
-        // Future use: web-based DB delete (ideally soft-delete) of selected provider
+        //
     }
 }

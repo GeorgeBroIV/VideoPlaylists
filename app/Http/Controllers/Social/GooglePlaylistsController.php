@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Social;
 
 use App\GetGooglePlaylists;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class GetGooglePlaylistsController extends Controller
+class GooglePlaylistsController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Social;
 
-use App\user_provider;
+use App\Http\Controllers\Controller;
+use App\Provider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class UserProviderController extends Controller
+class ProviderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,9 @@ class UserProviderController extends Controller
      */
     public function index()
     {
-        //
+        // Lists all providers
+        $providers = DB::table('providers')->get();
+        return view ('provider.index', compact('providers'));
     }
 
     /**
@@ -24,7 +28,7 @@ class UserProviderController extends Controller
      */
     public function create()
     {
-        //
+        // Future use: web-based addition of providers
     }
 
     /**
@@ -35,51 +39,51 @@ class UserProviderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Future use: web-based DB insert of created providers
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\user_provider  $user_provider
+     * @param  \App\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function show(user_provider $user_provider)
+    public function show(Provider $provider)
     {
-        //
+        // Future use: web-based show a selected provider
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\user_provider  $user_provider
+     * @param  \App\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function edit(user_provider $user_provider)
+    public function edit(Provider $provider)
     {
-        //
+        // Future use: web-based edit a selected provider
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\user_provider  $user_provider
+     * @param  \App\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user_provider $user_provider)
+    public function update(Request $request, Provider $provider)
     {
-        //
+        // Future use: web-based DB update of selected provider
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\user_provider  $user_provider
+     * @param  \App\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user_provider $user_provider)
+    public function destroy(Provider $provider)
     {
-        //
+        // Future use: web-based DB delete (ideally soft-delete) of selected provider
     }
 }

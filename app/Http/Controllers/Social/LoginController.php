@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Social;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request as Request;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use Illuminate\Http;
 
-class LoginProviderController extends Controller
+class LoginController extends Controller
 {
 	public function index()
 	{
