@@ -64,6 +64,7 @@ class LoginController extends Controller
         // This method is called from the Social Provider Callback route
 //		try {
 			$socialUsers = Socialite::driver($driver)->user();
+
 //			$socialToken = Socialite::driver($driver)->userFromToken($token);
 
 //		} catch (Exception $e) {
@@ -83,7 +84,8 @@ class LoginController extends Controller
 //			: $this->loginOrCreateAccount($user, $driver);
 
 //        return view ('auth.provider.index', compact('socialUsers'));
-        return redirect()->to('/loginprovider');
+
+        return redirect()->to('/loginprovider')->with($socialUsers);
 	}
 
 	protected function sendFailedResponse($msg = null) {

@@ -35,10 +35,10 @@
                                 </form>
 
 
-                                @if (isset($socialUser))
+                                @if (session($socialUsers))
                                     <table>
                                         <tr>
-                                            @foreach($socialUser as $socialUser)
+                                            @foreach($socialUsers as $socialUser)
                                                 <td>{{ $socialUser }}</td>
                                             @endforeach
                                         </tr>
