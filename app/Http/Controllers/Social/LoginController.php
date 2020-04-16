@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use Illuminate\Http;
 use Symfony\Component\Console\Input\Input;
+use App\GoogleUser;
 
 class LoginController extends Controller
 {
@@ -66,34 +67,20 @@ class LoginController extends Controller
         // This method is called from the Social Provider Callback route
 		try {
 			$socialUsers = (array) Socialite::driver($driver)->user();
-//            $socialUsers = Socialite::driver($driver);
 //			$socialToken = Socialite::driver($driver)->userFromToken($token);
-ddd($socialUsers);
+
 		} catch (Exception $e) {
 			return $this->sendFailedResponse($e->getMessage());
 		}
+//            $google_user = new GoogleUser;
+//            $google_user->token = Arr::get($socialUsers,'token');
+  ddd(Arr::get($socialUsers, 'token'));
+
 		// TODO Social Callback return -> redirect to a view (Social Login?)
         // This returns user data, and now we can open up API functionality
         // Perhaps this could return back to the WebApp 'Social Login' view to log into
         // other providers and select desired (logged-in) Provider API's / scopes for functionality.
-// $socials = (array)$socialUsers;
-//        ddd(gettype($social));
-//        return redirect()->route('social.login');
-//        return view ('loginprovider.index', compact('socialUsers'));
-
-//  This is helpful if we were to use Social Authentication for our WebApp login.
-//		return empty($user->email)
-//			? $this->sendFailedResponse("No email id returned from {$driver} provider.")
-//			: $this->loginOrCreateAccount($user, $driver);
-
-//        $url = url()->current();
-
-//        return view ($url . 'auth.provider.index', compact('socialUsers'));
-//        Session()->flashInput($socialUsers);
-
-return redirect()->to('/loginprovider')->with('social','mixup');
-		//        return redirect()->to('/loginprovider')->withInput($socialUsers);
-//        return redirect()->to('/loginprovider')->withInput($socials);
+        return redirect()->to('/loginprovider')->with('social','mixup');
 	}
 
 	protected function sendFailedResponse($msg = null) {
