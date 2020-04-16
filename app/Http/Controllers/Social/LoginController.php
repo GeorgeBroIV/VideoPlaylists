@@ -11,6 +11,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use Illuminate\Http;
+use Symfony\Component\Console\Input\Input;
 
 class LoginController extends Controller
 {
@@ -74,7 +75,7 @@ class LoginController extends Controller
         // This returns user data, and now we can open up API functionality
         // Perhaps this could return back to the WebApp 'Social Login' view to log into
         // other providers and select desired (logged-in) Provider API's / scopes for functionality.
-ddd($socialUsers);
+// ddd($socialUsers);
 //        return redirect()->route('social.login');
 //        return view ('loginprovider.index', compact('socialUsers'));
 
@@ -84,9 +85,11 @@ ddd($socialUsers);
 //			: $this->loginOrCreateAccount($user, $driver);
 
 //        return view ('auth.provider.index', compact('socialUsers'));
-        Session()->flashInput($socialUsers);
+//        Session()->flashInput($socialUsers);
 
-        return redirect()->to('/loginprovider');
+
+
+        return redirect()->to('/loginprovider')->withInput($socialUsers);
 	}
 
 	protected function sendFailedResponse($msg = null) {
