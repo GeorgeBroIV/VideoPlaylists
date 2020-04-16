@@ -85,7 +85,9 @@ class LoginController extends Controller
 //			? $this->sendFailedResponse("No email id returned from {$driver} provider.")
 //			: $this->loginOrCreateAccount($user, $driver);
 
-        $url = url()->current();
+//        $url = url()->current();
+            $url = url();
+		ddd($url);
 //        url()->current();
         return view ($url . 'auth.provider.index', compact('socialUsers'));
 //        Session()->flashInput($socialUsers);
