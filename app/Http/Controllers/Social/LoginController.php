@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Social;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request as Request;
 use App\User;
 use Exception;
@@ -64,8 +63,8 @@ class LoginController extends Controller
 	public function handleProviderCallback($driver) {
         // This method is called from the Social Provider Callback route
 //		try {
-			$socialUsers = Socialite::driver($driver)->user();
-
+//			$socialUsers = Socialite::driver($driver)->user();
+$socialUsers = [];
 //			$socialToken = Socialite::driver($driver)->userFromToken($token);
 
 //		} catch (Exception $e) {
@@ -85,7 +84,7 @@ class LoginController extends Controller
 //			: $this->loginOrCreateAccount($user, $driver);
 
 //        return view ('auth.provider.index', compact('socialUsers'));
-Session()->flashInput($socialUsers);
+        Session()->flashInput($socialUsers);
 
         return redirect()->to('/loginprovider');
 	}
