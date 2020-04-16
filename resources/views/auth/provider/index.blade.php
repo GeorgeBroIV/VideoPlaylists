@@ -35,9 +35,8 @@
                                 </form>
 
 @if(session('socialUsers'))
-    <h1>Set SocialUsers</h1>
-@endif
-
+<h1>Session</h1>
+    @endif
 
                             @else
                                 <h4>
