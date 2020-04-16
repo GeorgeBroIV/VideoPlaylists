@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class GoogleUser extends Model
 {
+    protected $table = 'google_users';
     protected $fillable = [
         'vpEmail',
         'token',
