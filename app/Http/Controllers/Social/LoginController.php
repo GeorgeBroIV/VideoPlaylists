@@ -68,7 +68,7 @@ class LoginController extends Controller
 			$socialUsers = (array) Socialite::driver($driver)->user();
 //            $socialUsers = Socialite::driver($driver);
 //			$socialToken = Socialite::driver($driver)->userFromToken($token);
-
+ddd($socialUsers);
 		} catch (Exception $e) {
 			return $this->sendFailedResponse($e->getMessage());
 		}
