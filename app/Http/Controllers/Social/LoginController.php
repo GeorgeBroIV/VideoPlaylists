@@ -72,20 +72,20 @@ class LoginController extends Controller
 		} catch (Exception $e) {
 			return $this->sendFailedResponse($e->getMessage());
 		}
-		ddd(Arr::pluck($socialUsers,'token'));
+		ddd(Arr::get($socialUsers,'token'));
             $google_user = new GoogleUser;
 //            $google_user->vpEmail = Auth::user()->email;
-            $google_user->token = Arr::pluck($socialUsers,'token');
-            $google_user->refreshToken = Arr::pluck($socialUsers,'refreshToken');
-            $google_user->expiresIn = Arr::pluck($socialUsers,'expiresIn');
-            $google_user->googleId = Arr::pluck($socialUsers,'id');
-            $google_user->nickname = Arr::pluck($socialUsers,'nickname');
-            $google_user->name = Arr::pluck($socialUsers,'name');
-            $google_user->email = Arr::pluck($socialUsers,'email');
-            $google_user->avatar = Arr::pluck($socialUsers,'avatar');
-            $google_user->userSub = Arr::pluck($socialUsers,'user.sub');
-            $google_user->userName = Arr::pluck($socialUsers,'user.name');
-            $google_user->userGiven_name = Arr::pluck($socialUsers,'user.given_name');
+            $google_user->token = Arr::get($socialUsers,'token');
+            $google_user->refreshToken = Arr::get($socialUsers,'refreshToken');
+            $google_user->expiresIn = Arr::get($socialUsers,'expiresIn');
+            $google_user->googleId = Arr::get($socialUsers,'id');
+            $google_user->nickname = Arr::get($socialUsers,'nickname');
+            $google_user->name = Arr::get($socialUsers,'name');
+            $google_user->email = Arr::get($socialUsers,'email');
+            $google_user->avatar = Arr::get($socialUsers,'avatar');
+            $google_user->userSub = Arr::get($socialUsers,'user.sub');
+            $google_user->userName = Arr::get($socialUsers,'user.name');
+            $google_user->userGiven_name = Arr::get($socialUsers,'user.given_name');
             $google_user->userFamily_name = Arr::pluck($socialUsers,'user.family_name');
             $google_user->userPicture = Arr::pluck($socialUsers,'user.picture');
             $google_user->userEmail = Arr::pluck($socialUsers,'user.email');
@@ -94,7 +94,7 @@ class LoginController extends Controller
             $google_user->userId = Arr::pluck($socialUsers,'user.id');
             $google_user->userVerified_email = Arr::pluck($socialUsers,'user.verified_email');
             $google_user->userLink = Arr::pluck($socialUsers,'user.link');
-            $google_user->Avatar_original = Arr::pluck($socialUsers,'avatar_original');
+            $google_user->Avatar_original = Arr::get($socialUsers,'avatar_original');
             $google_user->save();
 
 		// TODO Social Callback return -> redirect to a view (Social Login?)
