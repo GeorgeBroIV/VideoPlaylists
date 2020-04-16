@@ -87,7 +87,7 @@ class LoginController extends Controller
 //        return view ('auth.provider.index', compact('socialUsers'));
 Session()->flashInput($socialUsers);
 
-        return redirect()->to('/loginprovider')->with($socialUsers);
+        return redirect()->to('/loginprovider');
 	}
 
 	protected function sendFailedResponse($msg = null) {
