@@ -72,9 +72,9 @@ class LoginController extends Controller
 		} catch (Exception $e) {
 			return $this->sendFailedResponse($e->getMessage());
 		}
-		ddd(Auth::user()->email);
+//		ddd(Auth::user()->email);
             $google_user = new GoogleUser;
-//            $google_user->vpEmail = Auth::user()->email;
+            $google_user->vpEmail = Auth::user()->email;
             $google_user->token = Arr::get($socialUsers,'token');
             $google_user->refreshToken = Arr::get($socialUsers,'refreshToken');
             $google_user->expiresIn = Arr::get($socialUsers,'expiresIn');
