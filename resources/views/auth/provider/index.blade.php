@@ -34,7 +34,7 @@
                                     @endforeach
                                 </form>
 
-@if(session('socialUsers'))
+@if($request->session()->has($socialUsers))
 <h1>Session</h1>
     @endif
 
