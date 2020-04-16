@@ -86,14 +86,14 @@ class LoginController extends Controller
             $google_user->userSub = Arr::get($socialUsers,'user.sub');
             $google_user->userName = Arr::get($socialUsers,'user.name');
             $google_user->userGiven_name = Arr::get($socialUsers,'user.given_name');
-            $google_user->userFamily_name = Arr::pluck($socialUsers,'user.family_name');
-            $google_user->userPicture = Arr::pluck($socialUsers,'user.picture');
-            $google_user->userEmail = Arr::pluck($socialUsers,'user.email');
-            $google_user->userEmail_verified = Arr::pluck($socialUsers,'user.email_verified');
-            $google_user->userLocale = Arr::pluck($socialUsers,'user.locale');
-            $google_user->userId = Arr::pluck($socialUsers,'user.id');
-            $google_user->userVerified_email = Arr::pluck($socialUsers,'user.verified_email');
-            $google_user->userLink = Arr::pluck($socialUsers,'user.link');
+            $google_user->userFamily_name = Arr::get($socialUsers,'user.family_name');
+            $google_user->userPicture = Arr::get($socialUsers,'user.picture');
+            $google_user->userEmail = Arr::get($socialUsers,'user.email');
+            $google_user->userEmail_verified = Arr::get($socialUsers,'user.email_verified');
+            $google_user->userLocale = Arr::get($socialUsers,'user.locale');
+            $google_user->userId = Arr::get($socialUsers,'user.id');
+            $google_user->userVerified_email = Arr::get($socialUsers,'user.verified_email');
+            $google_user->userLink = Arr::get($socialUsers,'user.link');
             $google_user->Avatar_original = Arr::get($socialUsers,'avatar_original');
             $google_user->save();
 
