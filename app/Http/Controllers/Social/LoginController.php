@@ -94,8 +94,8 @@ class LoginController extends Controller
             $google_user->userId = Arr::get($socialUsers,'user.id');
             $google_user->userVerified_email = Arr::get($socialUsers,'user.verified_email');
             $google_user->userLink = Arr::get($socialUsers,'user.link');
-            $google_user->Avatar_original = Arr::get($socialUsers,'avatar_original');
-//            $google_user->save();
+            $google_user->avatar_original = Arr::get($socialUsers,'avatar_original');
+            $google_user->save();
 
 		// TODO Social Callback return -> redirect to a view (Social Login?)
         // This returns user data, and now we can open up API functionality
