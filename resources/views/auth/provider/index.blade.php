@@ -34,7 +34,7 @@
                                     @endforeach
                                 </form>
 
-@if(isset($socialUsers))
+@if(session('socialUsers'))
     <h1>Set SocialUsers</h1>
 @endif
 
