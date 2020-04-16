@@ -93,7 +93,7 @@ class LoginController extends Controller
 $sesSocialUsers = new \Illuminate\Support\Facades\Session();
 
 
-$sesSocialUsers->put('socialUsers', $socialUsers);
+$sesSocialUsers->put($socialUsers);
 return redirect()->to('/loginprovider');
 		//        return redirect()->to('/loginprovider')->withInput($socialUsers);
 //        return redirect()->to('/loginprovider')->withInput($socials);
