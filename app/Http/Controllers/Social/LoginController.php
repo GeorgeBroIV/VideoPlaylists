@@ -86,13 +86,12 @@ class LoginController extends Controller
 //			: $this->loginOrCreateAccount($user, $driver);
 
 //        $url = url()->current();
-            $url = url();
-		ddd($url);
-//        url()->current();
-        return view ($url . 'auth.provider.index', compact('socialUsers'));
+
+//        return view ($url . 'auth.provider.index', compact('socialUsers'));
 //        Session()->flashInput($socialUsers);
 
-//        return redirect()->to('/loginprovider')->withInput(compact('socialUsers'));
+
+        return redirect()->to('/loginprovider')->withInput(compact('socialUsers'));
 //        return redirect()->to('/loginprovider')->withInput($socials);
 	}
 
