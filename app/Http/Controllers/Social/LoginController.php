@@ -75,7 +75,8 @@ class LoginController extends Controller
         // This returns user data, and now we can open up API functionality
         // Perhaps this could return back to the WebApp 'Social Login' view to log into
         // other providers and select desired (logged-in) Provider API's / scopes for functionality.
-ddd(gettype($socialUsers));
+$social = (array)$socialUsers;
+        ddd(gettype($social));
 //        return redirect()->route('social.login');
 //        return view ('loginprovider.index', compact('socialUsers'));
 
