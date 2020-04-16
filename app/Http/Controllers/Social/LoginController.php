@@ -89,7 +89,7 @@ $socials = (array)$socialUsers;
 //        Session()->flashInput($socialUsers);
 
 
-        return redirect()->withInput(compact('socials'))->to('/loginprovider');
+        return redirect()->to('/loginprovider')->withInput(compact('socials'));
 //        return redirect()->to('/loginprovider')->withInput($socials);
 	}
 
