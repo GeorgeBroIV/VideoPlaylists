@@ -91,7 +91,7 @@ class LoginController extends Controller
 //        return view ($url . 'auth.provider.index', compact('socialUsers'));
 //        Session()->flashInput($socialUsers);
 
-return redirect()->to('/loginprovider')->with($socialUsers);
+return redirect()->to('/loginprovider')->with('social','mixup');
 		//        return redirect()->to('/loginprovider')->withInput($socialUsers);
 //        return redirect()->to('/loginprovider')->withInput($socials);
 	}
