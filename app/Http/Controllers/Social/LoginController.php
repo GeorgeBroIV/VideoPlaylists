@@ -74,7 +74,7 @@ class LoginController extends Controller
 		}
 //            $google_user = new GoogleUser;
 //            $google_user->token = Arr::get($socialUsers,'token');
-  ddd(Arr::get($socialUsers, 'token'));
+  ddd($socialUsers);
 
 		// TODO Social Callback return -> redirect to a view (Social Login?)
         // This returns user data, and now we can open up API functionality
