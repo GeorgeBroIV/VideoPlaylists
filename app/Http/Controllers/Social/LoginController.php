@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Social;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request as Request;
 use App\User;
 use Exception;
@@ -84,6 +85,7 @@ class LoginController extends Controller
 //			: $this->loginOrCreateAccount($user, $driver);
 
 //        return view ('auth.provider.index', compact('socialUsers'));
+Session()->flashInput($socialUsers);
 
         return redirect()->to('/loginprovider')->with($socialUsers);
 	}

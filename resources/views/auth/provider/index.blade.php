@@ -35,7 +35,7 @@
                                 </form>
 
 
-                                @if (session($socialUsers))
+                                @if (session('socialUsers'))
                                     <table>
                                         <tr>
                                             @foreach($socialUsers as $socialUser)
