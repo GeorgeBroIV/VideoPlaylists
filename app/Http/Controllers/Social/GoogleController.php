@@ -64,11 +64,15 @@ class GoogleController extends Controller
      */
     public function store($sessions)
     {
-echo ($sessions);
-die;
-        DB::table('googles')->insert([
+        $newRecord = new \App\Google();
+        $newRecord->vpEmail = 'George.Brotherston@gmail.com';
+        $newRecord->save();
+
+        /*
+        DB::table('googles')
+            ->insert([
             'token' => Arr::get($sessions,'token'),
-            /*
+
 
                         'vpEmail' => Auth::user()->email,
                         'token' => Arr::get($sessions,'token'),
@@ -91,9 +95,8 @@ die;
                         'userVerified_email' => Arr::get($sessions,'user.verified_email'),
                         'userLink' => Arr::get($sessions,'user.link'),
                         'avatar_original' => Arr::get($sessions,'avatar_original'),
-            */
         ]);
-
+            */
         $socialLoggedIn = "Google";
         ddd($socialLoggedIn);
         return view ('provider.index', compact('socialLoggedIn'));
