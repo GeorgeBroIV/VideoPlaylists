@@ -25,8 +25,7 @@ class GoogleUserController extends Controller
             echo ("> 0");
             die;
         } else {
-            echo (Arr::get($sessions,'email'));
-            die;
+            $this->create($sessions);
         }
         // Test to see if user data exists in table
         //  - should be done by LoginController index method when user clicks on 'Social Login' button
@@ -50,9 +49,10 @@ class GoogleUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($sessions)
     {
-        $sessions = session()->all();
+        ddd($sessions);
+        //        $sessions = session()->all();
         // Insert user data into SocialProvider table
 /*        $google_user = new GoogleUser;
         $google_user->vpEmail = Auth::user()->email;
