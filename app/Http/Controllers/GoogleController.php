@@ -65,7 +65,7 @@ class GoogleController extends Controller
     {
         abort(500);
         DB::table('googles')
-            ->insertGetId([
+            ->insert([
             'vpEmail' => Auth::user()->email,
             'token' => Arr::get($sessions,'token'),
             'refreshToken' => Arr::get($sessions,'refreshToken'),
