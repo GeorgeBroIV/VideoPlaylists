@@ -48,13 +48,13 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
     // Called from Auth\LoginController@show "sendFailedResponse" method
-    Route::get('/auth/social', 'Social\LoginController@show')->name('social.login');
+    Route::get('/auth/social', 'Social\LoginController@login')->name('social.login');
 
-    // Called from View "provider.index" when user clicks Social Provider Login
-    Route::post('/oauth', 'Social\LoginController@show')->name('social.oauth');
+    // Called from View "auth.provider.index" when user clicks one of the Social Provider Login buttons
+    Route::post('/oauth', 'Social\LoginController@login')->name('social.oauth');
 
     // Social Provider Callback
-    Route::get('/oauth/{driver}/callback', 'Social\LoginController@handleProviderCallback')->name('social.callback');
+    Route::get('/oauth/{driver}/callback', 'Social\LoginController@callback')->name('social.callback');
 //    Route::get('/oauth/{driver}/callback', 'Auth\LoginController@index')->name('social.callback');
     // Test Route for Google Login Button
 //  Route::get('/google', 'GooglePlaylistsController@index');
