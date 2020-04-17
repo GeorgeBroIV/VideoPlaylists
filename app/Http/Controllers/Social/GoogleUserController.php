@@ -54,7 +54,7 @@ class GoogleUserController extends Controller
                     $google_user->avatar_original = Arr::get($sessions,'avatar_original');
 //                    $google_user->save();
 
-
+ddd($google_user);
         // TODO Social Callback return -> redirect to a view (Social Login?)
         // This returns user data, and now we can open up API functionality
         // Perhaps this could return back to the WebApp 'Social Login' view to log into
