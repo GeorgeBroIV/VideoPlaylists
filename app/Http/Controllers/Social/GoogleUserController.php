@@ -21,9 +21,13 @@ class GoogleUserController extends Controller
         $sessions = session()->all();
         $user = DB::table('google_users')->get()
             ->where('vpEmail', Arr::get($sessions,'email'));
-        if($user->count() > 0)
-        {
-            ddd($user);
+        ddd($user);
+        if($user->count() > 0) {
+            echo ("> 0");
+            die;
+        } else {
+            echo ("no record");
+            die;
         }
         // Test to see if user data exists in table
         //  - should be done by LoginController index method when user clicks on 'Social Login' button
