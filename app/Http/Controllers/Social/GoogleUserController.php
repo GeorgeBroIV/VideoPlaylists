@@ -15,7 +15,13 @@ class GoogleUserController extends Controller
      */
     public function index()
     {
-        ddd(session()->all());
+        $sessions = session()->all();
+        $socialUsers = [];
+        foreach ($sessions as $session)
+        {
+            array_push($socialUsers, $session);
+        }
+        ddd($socialUsers);
         // Test to see if user data exists in table
         //  - should be done by LoginController index method when user clicks on 'Social Login' button
         //  - this should determine:
