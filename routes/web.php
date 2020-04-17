@@ -58,3 +58,4 @@ use Illuminate\Support\Facades\Route;
 //    Route::get('/oauth/{driver}/callback', 'Auth\LoginController@index')->name('social.callback');
     // Test Route for Google Login Button
 //  Route::get('/google', 'GooglePlaylistsController@index');
+Route::get('/google', 'GoogleUserController@index');

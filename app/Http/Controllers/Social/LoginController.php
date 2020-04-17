@@ -87,11 +87,11 @@ $driver = 'google';
 		}
 
         // Insert user data into SocialProvider table
-		$socialController = ucfirst($driver) . 'UserController@index';
+		$socialController = ucfirst($driver) . 'UserController';
 
-		return redirect()->action($socialController, $socialUsers);
-
-//        return redirect()->to('/loginprovider')->with('Google');
+//		return redirect()->action($socialController, $socialUsers);
+//      return redirect()->to('/loginprovider')->with('Google');
+        return redirect()->to($socialController);
 	}
 
 	protected function sendFailedResponse($msg = null) {
