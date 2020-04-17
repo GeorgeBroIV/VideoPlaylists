@@ -46,7 +46,6 @@ class LoginController extends Controller
         return view('auth.provider.index', compact('providers', 'users'));
 	}
 
-// TODO Parse out the following logic to applicable areas to refactor this Controller to be RESTFUL
     /**
      * Display a listing of the resource.
      *
@@ -60,7 +59,7 @@ class LoginController extends Controller
 
 	    // SLOPPY - see if I can pull the provider from the $request parameter from login(Request $request)
         $driver = array_key_last($_REQUEST);
-
+ddd($driver);
 		try {
             // This is what logs the user into the Social Provider
 		    return Socialite::driver($driver)
@@ -74,11 +73,9 @@ class LoginController extends Controller
 		} catch (Exception $e) {
 			return $this->sendFailedResponse($e->getMessage());
 		}
-        ddd($driver);
 	}
 
 	public function callback($driver) {
-ddd($driver);
         // This method is called from the Social Provider Callback route
 		try {
 			$socialUsers = (array) Socialite::driver($driver)->user();
