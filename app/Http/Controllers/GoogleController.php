@@ -18,6 +18,7 @@ class GoogleController extends Controller
 
     public function index()
     {
+        ddd($this->socialLoggedIn);
         if(!$this->socialLoggedIn="Google")
         {
             $sessions = session()->all();
