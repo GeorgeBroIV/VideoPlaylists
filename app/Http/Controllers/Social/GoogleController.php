@@ -22,9 +22,12 @@ class GoogleController extends Controller
         if($user->count() > 0) {
             // update record
             echo ("> 0");
+            echo ($user);
             die;
         } else {
             // create new record
+echo ("no record");
+echo ($user);
             $this->store($sessions);
         }
         // Test to see if user data exists in table
