@@ -52,10 +52,8 @@ class GoogleController extends Controller
         // Perhaps this could return back to the WebApp 'Social Login' view to log into
         // other providers and select desired (logged-in) Provider API's / scopes for functionality.
         $socialLoggedIn = $this->socialLoggedIn;
-        echo ("<p>" . $this->socialLoggedIn . "</p>");
-        echo ("Store");
-        die;
-//        return view ('provider.index', compact('socialLoggedIn'));
+
+        return view ('provider.index', compact('socialLoggedIn'));
     }
 
     /**
