@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Google;
+use http\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -65,12 +66,7 @@ class GoogleController extends Controller
     {
         $newRecord = new Google();
         $newRecord->vpEmail = 'George.Brotherston@gmail.com';
-        try {
-            $newRecord->save();
-        } catch (Exception $e) {
-            ddd($e->getMessage());
-        }
-        //
+        $newRecord->saveOrFail();
 
         /*
         DB::table('googles')
