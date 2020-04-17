@@ -65,7 +65,8 @@ class GoogleController extends Controller
     {
         $newRecord = new Google();
         $newRecord->vpEmail = 'George.Brotherston@gmail.com';
-        $newRecord->save();
+ddd($newRecord);
+        //        $newRecord->save();
 
         /*
         DB::table('googles')
