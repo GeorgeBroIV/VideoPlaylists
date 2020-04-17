@@ -67,9 +67,9 @@ class GoogleController extends Controller
         $newRecord = new Google();
         $newRecord->setTable('googles');
         $newRecord->vpEmail = 'George.Brotherston@gmail.com';
-        ddd($newRecord);
-        $newRecord->saveOrFail();
 
+        $newRecord->saveOrFail();
+        ddd($newRecord);
         /*
         DB::table('googles')
             ->insert([
