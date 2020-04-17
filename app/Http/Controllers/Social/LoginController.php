@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\Social;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request as Request;
 use App\User;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Social\GoogleUserController;
 
 class LoginController extends Controller
 {

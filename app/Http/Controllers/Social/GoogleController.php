@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Social;
 
-use App\GoogleUser;
+use App\Google;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
-class GoogleUserController extends Controller
+class GoogleController extends Controller
 {
     /**
      * Display a listing of the resource.
+     *
      */
     public function index()
     {
@@ -46,6 +47,7 @@ class GoogleUserController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -55,50 +57,49 @@ class GoogleUserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     *
      */
     public function store($sessions)
     {
         DB::table('google_users')->insert([
             'token' => Arr::get($sessions,'token'),
-/*
+            /*
 
-            'vpEmail' => Auth::user()->email,
-            'token' => Arr::get($sessions,'token'),
-            'refreshToken' => Arr::get($sessions,'refreshToken'),
-            'expiresIn' => Arr::get($sessions,'expiresIn'),
-            'googleId' => Arr::get($sessions,'id'),
-            'nickname' => Arr::get($sessions,'nickname'),
-            'name' => Arr::get($sessions,'name'),
-            'email' => Arr::get($sessions,'email'),
-            'avatar' => Arr::get($sessions,'avatar'),
-            'userSub' => Arr::get($sessions,'user.sub'),
-            'userName' => Arr::get($sessions,'user.name'),
-            'userGiven_name' => Arr::get($sessions,'user.given_name'),
-            'userFamily_name' => Arr::get($sessions,'user.family_name'),
-            'userPicture' => Arr::get($sessions,'user.picture'),
-            'userEmail' => Arr::get($sessions,'user.email'),
-            'userEmail_verified' => Arr::get($sessions,'user.email_verified'),
-            'userLocale' => Arr::get($sessions,'user.locale'),
-            'userId' => Arr::get($sessions,'user.id'),
-            'userVerified_email' => Arr::get($sessions,'user.verified_email'),
-            'userLink' => Arr::get($sessions,'user.link'),
-            'avatar_original' => Arr::get($sessions,'avatar_original'),
-*/
+                        'vpEmail' => Auth::user()->email,
+                        'token' => Arr::get($sessions,'token'),
+                        'refreshToken' => Arr::get($sessions,'refreshToken'),
+                        'expiresIn' => Arr::get($sessions,'expiresIn'),
+                        'googleId' => Arr::get($sessions,'id'),
+                        'nickname' => Arr::get($sessions,'nickname'),
+                        'name' => Arr::get($sessions,'name'),
+                        'email' => Arr::get($sessions,'email'),
+                        'avatar' => Arr::get($sessions,'avatar'),
+                        'userSub' => Arr::get($sessions,'user.sub'),
+                        'userName' => Arr::get($sessions,'user.name'),
+                        'userGiven_name' => Arr::get($sessions,'user.given_name'),
+                        'userFamily_name' => Arr::get($sessions,'user.family_name'),
+                        'userPicture' => Arr::get($sessions,'user.picture'),
+                        'userEmail' => Arr::get($sessions,'user.email'),
+                        'userEmail_verified' => Arr::get($sessions,'user.email_verified'),
+                        'userLocale' => Arr::get($sessions,'user.locale'),
+                        'userId' => Arr::get($sessions,'user.id'),
+                        'userVerified_email' => Arr::get($sessions,'user.verified_email'),
+                        'userLink' => Arr::get($sessions,'user.link'),
+                        'avatar_original' => Arr::get($sessions,'avatar_original'),
+            */
         ]);
 
         $socialLoggedIn = "Google";
-ddd($socialLoggedIn);
+        ddd($socialLoggedIn);
         return view ('provider.index', compact('socialLoggedIn'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\GoogleUser  $googleUser
+     * @param  \App\Google  $google
      * @return \Illuminate\Http\Response
      */
-    public function show(GoogleUser $googleUser)
+    public function show(Google $google)
     {
         //
     }
@@ -106,10 +107,10 @@ ddd($socialLoggedIn);
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\GoogleUser  $googleUser
+     * @param  \App\Google  $google
      * @return \Illuminate\Http\Response
      */
-    public function edit(GoogleUser $googleUser)
+    public function edit(Google $google)
     {
         //
     }
@@ -118,10 +119,10 @@ ddd($socialLoggedIn);
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\GoogleUser  $googleUser
+     * @param  \App\Google  $google
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GoogleUser $googleUser)
+    public function update(Request $request, Google $google)
     {
         //
     }
@@ -129,10 +130,10 @@ ddd($socialLoggedIn);
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\GoogleUser  $googleUser
+     * @param  \App\Google  $google
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GoogleUser $googleUser)
+    public function destroy(Google $google)
     {
         //
     }
