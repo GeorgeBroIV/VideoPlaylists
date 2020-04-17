@@ -65,6 +65,7 @@ class GoogleController extends Controller
     public function store($sessions)
     {
         $newRecord = new Google();
+        ddd($newRecord);
         $newRecord->vpEmail = 'George.Brotherston@gmail.com';
         $newRecord->saveOrFail();
 
