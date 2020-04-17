@@ -25,7 +25,7 @@ class GoogleUserController extends Controller
             echo ("> 0");
             die;
         } else {
-            echo ("no record");
+            echo (Arr::get($sessions,'email'));
             die;
         }
         // Test to see if user data exists in table
