@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Social;
 use App\GoogleUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
 class GoogleUserController extends Controller
@@ -31,26 +32,26 @@ class GoogleUserController extends Controller
         // Insert user data into SocialProvider table
                     $google_user = new GoogleUser;
                     $google_user->vpEmail = Auth::user()->email;
-                    $google_user->token = Arr::get($socialUsers,'token');
-                    $google_user->refreshToken = Arr::get($socialUsers,'refreshToken');
-                    $google_user->expiresIn = Arr::get($socialUsers,'expiresIn');
-                    $google_user->googleId = Arr::get($socialUsers,'id');
-                    $google_user->nickname = Arr::get($socialUsers,'nickname');
-                    $google_user->name = Arr::get($socialUsers,'name');
-                    $google_user->email = Arr::get($socialUsers,'email');
-                    $google_user->avatar = Arr::get($socialUsers,'avatar');
-                    $google_user->userSub = Arr::get($socialUsers,'user.sub');
-                    $google_user->userName = Arr::get($socialUsers,'user.name');
-                    $google_user->userGiven_name = Arr::get($socialUsers,'user.given_name');
-                    $google_user->userFamily_name = Arr::get($socialUsers,'user.family_name');
-                    $google_user->userPicture = Arr::get($socialUsers,'user.picture');
-                    $google_user->userEmail = Arr::get($socialUsers,'user.email');
-                    $google_user->userEmail_verified = Arr::get($socialUsers,'user.email_verified');
-                    $google_user->userLocale = Arr::get($socialUsers,'user.locale');
-                    $google_user->userId = Arr::get($socialUsers,'user.id');
-                    $google_user->userVerified_email = Arr::get($socialUsers,'user.verified_email');
-                    $google_user->userLink = Arr::get($socialUsers,'user.link');
-                    $google_user->avatar_original = Arr::get($socialUsers,'avatar_original');
+                    $google_user->token = Arr::get($sessions,'token');
+                    $google_user->refreshToken = Arr::get($sessions,'refreshToken');
+                    $google_user->expiresIn = Arr::get($sessions,'expiresIn');
+                    $google_user->googleId = Arr::get($sessions,'id');
+                    $google_user->nickname = Arr::get($sessions,'nickname');
+                    $google_user->name = Arr::get($sessions,'name');
+                    $google_user->email = Arr::get($sessions,'email');
+                    $google_user->avatar = Arr::get($sessions,'avatar');
+                    $google_user->userSub = Arr::get($sessions,'user.sub');
+                    $google_user->userName = Arr::get($sessions,'user.name');
+                    $google_user->userGiven_name = Arr::get($sessions,'user.given_name');
+                    $google_user->userFamily_name = Arr::get($sessions,'user.family_name');
+                    $google_user->userPicture = Arr::get($sessions,'user.picture');
+                    $google_user->userEmail = Arr::get($sessions,'user.email');
+                    $google_user->userEmail_verified = Arr::get($sessions,'user.email_verified');
+                    $google_user->userLocale = Arr::get($sessions,'user.locale');
+                    $google_user->userId = Arr::get($sessions,'user.id');
+                    $google_user->userVerified_email = Arr::get($sessions,'user.verified_email');
+                    $google_user->userLink = Arr::get($sessions,'user.link');
+                    $google_user->avatar_original = Arr::get($sessions,'avatar_original');
 //                    $google_user->save();
 
 
