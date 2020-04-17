@@ -17,7 +17,7 @@ class GoogleController extends Controller
     public function index()
     {
         $sessions = session()->all();
-        $user = DB::table('google_users')->get()
+        $user = DB::table('googles')->get()
             ->where('vpEmail', Arr::get($sessions,'email'));
         if($user->count() > 0) {
             // update record
@@ -60,7 +60,7 @@ class GoogleController extends Controller
      */
     public function store($sessions)
     {
-        DB::table('google_users')->insert([
+        DB::table('googles')->insert([
             'token' => Arr::get($sessions,'token'),
             /*
 
