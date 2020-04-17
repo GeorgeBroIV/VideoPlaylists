@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Social;
+namespace App\Http\Controllers;
 
 use App\Google;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
