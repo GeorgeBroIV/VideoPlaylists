@@ -91,8 +91,8 @@ $driver = 'google';
 		$socialController = ucfirst($driver) . 'UserController';
         $socialUsers = serialize($socialUsers);
 //		return redirect()->action($socialController, $socialUsers);
-//      return redirect()->to($driver)->with($socialUsers);
-        return redirect()->route('/google');
+        return redirect()->to($driver)->with($socialUsers);
+
 	}
 
 	protected function sendFailedResponse($msg = null) {
