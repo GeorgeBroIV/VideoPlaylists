@@ -52,7 +52,7 @@ class GoogleUserController extends Controller
                     $google_user->userVerified_email = Arr::get($sessions,'user.verified_email');
                     $google_user->userLink = Arr::get($sessions,'user.link');
                     $google_user->avatar_original = Arr::get($sessions,'avatar_original');
-//                    $google_user->save();
+                    $google_user->save();
 
 ddd($google_user);
         // TODO Social Callback return -> redirect to a view (Social Login?)
