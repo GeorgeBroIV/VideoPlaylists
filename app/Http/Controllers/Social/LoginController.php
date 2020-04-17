@@ -59,16 +59,10 @@ class LoginController extends Controller
 
 	    // SLOPPY - see if I can pull the provider from the $request parameter from login(Request $request)
         $driver = array_key_last($_REQUEST);
-$driver = "google";
+$driver = 'google';
 		try {
             // This is what logs the user into the Social Provider
 		    return Socialite::driver($driver)
-                ->scopes([
-                    'openid',
-                    'profile',
-                    'email',
-                    'https://www.googleapis.com/auth/youtube.readonly'
-                ])
                 ->redirect();
 		} catch (Exception $e) {
 			return $this->sendFailedResponse($e->getMessage());
