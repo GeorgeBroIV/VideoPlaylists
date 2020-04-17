@@ -17,7 +17,6 @@ class GoogleUserController extends Controller
     public function index()
     {
         $sessions = session()->all();
-        ddd($sessions);
         $user = DB::table('google_users')->get()
             ->where('vpEmail', Arr::get($sessions,'email'));
         if($user->count() > 0) {
@@ -61,8 +60,6 @@ class GoogleUserController extends Controller
      */
     public function store($sessions)
     {
-//        ddd($sessions);
-
         DB::table('google_users')->insert([
             'vpEmail' => Auth::user()->email,
             'token' => Arr::get($sessions,'token'),
