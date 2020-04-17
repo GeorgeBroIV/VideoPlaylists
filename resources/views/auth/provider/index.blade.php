@@ -34,7 +34,7 @@
                                     @endforeach
                                 </form>
 
-@if($socialLoggedIn)
+@if(isset($socialLoggedIn))
 <h1>Logged in with {{ $socialLoggedIn }}</h1>
     @endif
 
