@@ -13,9 +13,9 @@ class GoogleUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($socialUsers)
+    public function index()
     {
-        ddd($socialUsers);
+        ddd($_REQUEST);
         // Test to see if user data exists in table
         //  - should be done by LoginController index method when user clicks on 'Social Login' button
         //  - this should determine:
