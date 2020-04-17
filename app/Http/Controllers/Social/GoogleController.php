@@ -17,17 +17,20 @@ class GoogleController extends Controller
     public function index()
     {
         $sessions = session()->all();
-        $user = DB::table('googles')->get();
-//            ->where('vpEmail', Arr::get($sessions,'email'));
+        $email = Arr::get($sessions,'email');
+        $user = DB::table('googles')->get()
+            ->where('vpEmail', $email);
         if($user->count() > 0) {
             // update record
             echo ("> 0");
+            echo ($email);
             echo ($user);
             die;
         } else {
             // create new record
 echo ("no record");
 echo ($user);
+echo ($email);
 die;
             $this->store($sessions);
         }
