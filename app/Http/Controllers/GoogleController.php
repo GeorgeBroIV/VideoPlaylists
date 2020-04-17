@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Google;
-use http\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -66,7 +65,7 @@ class GoogleController extends Controller
     {
         DB::table('googles')
             ->insert([
-            'token' => Arr::get($sessions,'token')
+            'token' => Arr::get($sessions,'token'),
 /*
             'vpEmail' => Auth::user()->email,
             'token' => Arr::get($sessions,'token'),
