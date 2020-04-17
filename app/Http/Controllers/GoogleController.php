@@ -67,8 +67,8 @@ class GoogleController extends Controller
         DB::table('googles')
             ->insert([
             'vpEmail' => Auth::user()->email,
-/*
             'token' => Arr::get($sessions,'token'),
+/*
             'refreshToken' => Arr::get($sessions,'refreshToken'),
             'expiresIn' => Arr::get($sessions,'expiresIn'),
             'googleId' => Arr::get($sessions,'id'),
