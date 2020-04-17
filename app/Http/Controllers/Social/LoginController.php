@@ -92,7 +92,7 @@ $driver = 'google';
 
 //		return redirect()->action($socialController, $socialUsers);
 //      return redirect()->to('/loginprovider')->with('Google');
-        return redirect()->to($driver)-with(compact($socialUsers));
+        return redirect()->to($driver)->with($socialUsers);
 	}
 
 	protected function sendFailedResponse($msg = null) {
