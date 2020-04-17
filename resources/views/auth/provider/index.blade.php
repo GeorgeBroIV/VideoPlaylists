@@ -35,7 +35,7 @@
                                 </form>
 
 @if($socialLoggedIn)
-<h1>Logged In</h1>
+<h1>Logged in with {{ $socialLoggedIn }}</h1>
     @endif
 
                             @else

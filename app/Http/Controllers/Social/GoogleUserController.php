@@ -87,7 +87,7 @@ class GoogleUserController extends Controller
             'avatar_original' => Arr::get($sessions,'avatar_original'),
         ]);
 
-        $socialLoggedIn = $driver;
+        $socialLoggedIn = "Google";
         return view ('provider.index', compact('socialLoggedIn'));
     }
 

@@ -88,7 +88,7 @@ $driver = 'google';
 		}
 
         // Insert user data into SocialProvider table
-        return redirect()->to($driver)->with($socialUsers, $driver);
+        return redirect()->to($driver)->with($socialUsers);
 
 	}
 
