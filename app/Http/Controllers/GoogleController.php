@@ -63,10 +63,10 @@ class GoogleController extends Controller
      */
     public function store($sessions)
     {
-        abort(500);
         DB::table('googles')
             ->insert([
             'vpEmail' => Auth::user()->email,
+/*
             'token' => Arr::get($sessions,'token'),
             'refreshToken' => Arr::get($sessions,'refreshToken'),
             'expiresIn' => Arr::get($sessions,'expiresIn'),
@@ -87,6 +87,7 @@ class GoogleController extends Controller
             'userVerified_email' => Arr::get($sessions,'user.verified_email'),
             'userLink' => Arr::get($sessions,'user.link'),
             'avatar_original' => Arr::get($sessions,'avatar_original'),
+*/
         ]);
         $socialLoggedIn = "Google";
         ddd($socialLoggedIn);
