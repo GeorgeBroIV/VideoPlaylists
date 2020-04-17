@@ -16,12 +16,7 @@ class GoogleUserController extends Controller
     public function index()
     {
         $sessions = session()->all();
-        $socialUsers = [];
-        foreach ($sessions as $session)
-        {
-            array_push($socialUsers, $session);
-        }
-        ddd($sessions);
+
         // Test to see if user data exists in table
         //  - should be done by LoginController index method when user clicks on 'Social Login' button
         //  - this should determine:
@@ -33,7 +28,7 @@ class GoogleUserController extends Controller
         //          - if not user-authorized, show API's and associated scopes available to authorize
         //
         // Insert user data into SocialProvider table
-        //		ddd(Auth::user()->email);
+        		ddd(Auth::user()->email);
         /*            $google_user = new GoogleUser;
                     $google_user->vpEmail = Auth::user()->email;
                     $google_user->token = Arr::get($socialUsers,'token');
