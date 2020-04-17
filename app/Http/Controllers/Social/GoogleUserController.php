@@ -29,7 +29,6 @@ class GoogleUserController extends Controller
         //          - if not user-authorized, show API's and associated scopes available to authorize
         //
         // Insert user data into SocialProvider table
-        		ddd(Auth::user()->email);
                     $google_user = new GoogleUser;
                     $google_user->vpEmail = Auth::user()->email;
                     $google_user->token = Arr::get($socialUsers,'token');
