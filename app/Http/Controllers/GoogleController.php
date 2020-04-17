@@ -64,41 +64,33 @@ class GoogleController extends Controller
      */
     public function store($sessions)
     {
-        $newRecord = new Google();
-        $newRecord->setTable('googles');
-        $newRecord->vpEmail = 'George.Brotherston@gmail.com';
-
-        $newRecord->saveOrFail();
-        ddd($newRecord);
-        /*
         DB::table('googles')
             ->insert([
+            'token' => Arr::get($sessions,'token')
+/*
+            'vpEmail' => Auth::user()->email,
             'token' => Arr::get($sessions,'token'),
-
-
-                        'vpEmail' => Auth::user()->email,
-                        'token' => Arr::get($sessions,'token'),
-                        'refreshToken' => Arr::get($sessions,'refreshToken'),
-                        'expiresIn' => Arr::get($sessions,'expiresIn'),
-                        'googleId' => Arr::get($sessions,'id'),
-                        'nickname' => Arr::get($sessions,'nickname'),
-                        'name' => Arr::get($sessions,'name'),
-                        'email' => Arr::get($sessions,'email'),
-                        'avatar' => Arr::get($sessions,'avatar'),
-                        'userSub' => Arr::get($sessions,'user.sub'),
-                        'userName' => Arr::get($sessions,'user.name'),
-                        'userGiven_name' => Arr::get($sessions,'user.given_name'),
-                        'userFamily_name' => Arr::get($sessions,'user.family_name'),
-                        'userPicture' => Arr::get($sessions,'user.picture'),
-                        'userEmail' => Arr::get($sessions,'user.email'),
-                        'userEmail_verified' => Arr::get($sessions,'user.email_verified'),
-                        'userLocale' => Arr::get($sessions,'user.locale'),
-                        'userId' => Arr::get($sessions,'user.id'),
-                        'userVerified_email' => Arr::get($sessions,'user.verified_email'),
-                        'userLink' => Arr::get($sessions,'user.link'),
-                        'avatar_original' => Arr::get($sessions,'avatar_original'),
+            'refreshToken' => Arr::get($sessions,'refreshToken'),
+            'expiresIn' => Arr::get($sessions,'expiresIn'),
+            'googleId' => Arr::get($sessions,'id'),
+            'nickname' => Arr::get($sessions,'nickname'),
+            'name' => Arr::get($sessions,'name'),
+            'email' => Arr::get($sessions,'email'),
+            'avatar' => Arr::get($sessions,'avatar'),
+            'userSub' => Arr::get($sessions,'user.sub'),
+            'userName' => Arr::get($sessions,'user.name'),
+            'userGiven_name' => Arr::get($sessions,'user.given_name'),
+            'userFamily_name' => Arr::get($sessions,'user.family_name'),
+            'userPicture' => Arr::get($sessions,'user.picture'),
+            'userEmail' => Arr::get($sessions,'user.email'),
+            'userEmail_verified' => Arr::get($sessions,'user.email_verified'),
+            'userLocale' => Arr::get($sessions,'user.locale'),
+            'userId' => Arr::get($sessions,'user.id'),
+            'userVerified_email' => Arr::get($sessions,'user.verified_email'),
+            'userLink' => Arr::get($sessions,'user.link'),
+            'avatar_original' => Arr::get($sessions,'avatar_original'),
+*/
         ]);
-            */
         $socialLoggedIn = "Google";
         ddd($socialLoggedIn);
         return view ('provider.index', compact('socialLoggedIn'));
