@@ -18,8 +18,9 @@ class GoogleController extends Controller
     {
         $sessions = session()->all();
         $email = Arr::get($sessions,'email');
-        $user = DB::table('googles')->get()
-            ->where('vpEmail', $email);
+        $user = DB::table('googles')
+            ->where('vpEmail', $email)
+            ->get();
         if($user->count() > 0) {
             // update record
             echo ("> 0");
