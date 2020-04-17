@@ -85,6 +85,7 @@ class GoogleUserController extends Controller
         ]);
 
         $socialLoggedIn = "Google";
+ddd($socialLoggedIn);
         return view ('provider.index', compact('socialLoggedIn'));
     }
 
