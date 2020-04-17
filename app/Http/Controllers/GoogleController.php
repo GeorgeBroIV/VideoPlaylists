@@ -14,22 +14,25 @@ class GoogleController extends Controller
      * Display a listing of the resource.
      *
      */
-    public function index()
+    public function index($store)
     {
-        $sessions = session()->all();
-        $email = Arr::get($sessions,'email');
-        $user = DB::table('googles')
-            ->where('vpEmail', $email)
-            ->get();
-        if($user->count() > 0) {
-            // update record
-            echo ("> 0");
-            echo ($email);
-            echo ($user);
-            die;
-        } else {
-            // create new record
-            $this->store($sessions);
+        if(!$store="Google")
+        {
+            $sessions = session()->all();
+            $email = Arr::get($sessions, 'email');
+            $user = DB::table('googles')
+                ->where('vpEmail', $email)
+                ->get();
+            if ($user->count() > 0) {
+                // update record
+                echo("> 0");
+                echo($email);
+                echo($user);
+                die;
+            } else {
+                // create new record
+                $this->store($sessions);
+            }
         }
         // Test to see if user data exists in table
         //  - should be done by LoginController index method when user clicks on 'Social Login' button
@@ -46,6 +49,7 @@ class GoogleController extends Controller
         // This returns user data, and now we can open up API functionality
         // Perhaps this could return back to the WebApp 'Social Login' view to log into
         // other providers and select desired (logged-in) Provider API's / scopes for functionality.
+        return view ('provider.index', compact('store'));
     }
 
     /**
@@ -89,7 +93,7 @@ class GoogleController extends Controller
             'avatar_original' => Arr::get($sessions,'avatar_original'),
         ]);
         $socialLoggedIn = "Google";
-        return view ('provider.index', compact('socialLoggedIn'));
+        return $socialLoggedIn;
     }
 
     /**
