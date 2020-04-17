@@ -21,7 +21,6 @@ class GoogleUserController extends Controller
         $sessions = session()->all();
         $user = DB::table('google_users')->get()
             ->where('vpEmail', Arr::get($sessions,'email'));
-        ddd($user);
         if($user->count() > 0) {
             echo ("> 0");
             die;
