@@ -89,7 +89,6 @@ $driver = 'google';
 
         // Insert user data into SocialProvider table
 		$socialController = ucfirst($driver) . 'UserController';
-        $socialUsers = serialize($socialUsers);
 //		return redirect()->action($socialController, $socialUsers);
         return redirect()->to($driver)->with($socialUsers);
 
