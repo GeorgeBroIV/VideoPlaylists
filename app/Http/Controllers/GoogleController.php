@@ -97,6 +97,8 @@ class GoogleController extends Controller
             'avatar_original' => Arr::get($sessions,'avatar_original'),
         ]);
         $this->socialLoggedIn = "Google";
+        echo ("<p>" . $this->socialLoggedIn . "</p>");
+        echo ("Store");
         return;
     }
 
