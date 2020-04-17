@@ -64,7 +64,7 @@ class GoogleController extends Controller
     public function store($sessions)
     {
         DB::table('googles')
-            ->insert([
+            ->insertGetId([
             'name' => 'George',
 /*
             'vpEmail' => Auth::user()->email,
