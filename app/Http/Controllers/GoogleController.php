@@ -68,8 +68,7 @@ class GoogleController extends Controller
         try {
             $newRecord->save();
         } catch (Exception $e) {
-            echo ($e->getMessage());
-            die;
+            ddd($e->getMessage());
         }
         //
 
