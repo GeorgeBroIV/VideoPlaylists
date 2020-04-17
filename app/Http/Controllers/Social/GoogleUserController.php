@@ -13,12 +13,11 @@ class GoogleUserController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $sessions = session()->all();
+        ddd($sessions);
         $user = DB::table('google_users')->get()
             ->where('vpEmail', Arr::get($sessions,'email'));
         if($user->count() > 0) {
@@ -62,34 +61,33 @@ class GoogleUserController extends Controller
      */
     public function store($sessions)
     {
-        ddd($sessions);
-        //        $sessions = session()->all();
-        // Insert user data into SocialProvider table
-        /*        $google_user = new GoogleUser;
-                $google_user->vpEmail = Auth::user()->email;
-                $google_user->token = Arr::get($sessions,'token');
-                $google_user->refreshToken = Arr::get($sessions,'refreshToken');
-                $google_user->expiresIn = Arr::get($sessions,'expiresIn');
-                $google_user->googleId = Arr::get($sessions,'id');
-                $google_user->nickname = Arr::get($sessions,'nickname');
-                $google_user->name = Arr::get($sessions,'name');
-                $google_user->email = Arr::get($sessions,'email');
-                $google_user->avatar = Arr::get($sessions,'avatar');
-                $google_user->userSub = Arr::get($sessions,'user.sub');
-                $google_user->userName = Arr::get($sessions,'user.name');
-                $google_user->userGiven_name = Arr::get($sessions,'user.given_name');
-                $google_user->userFamily_name = Arr::get($sessions,'user.family_name');
-                $google_user->userPicture = Arr::get($sessions,'user.picture');
-                $google_user->userEmail = Arr::get($sessions,'user.email');
-                $google_user->userEmail_verified = Arr::get($sessions,'user.email_verified');
-                $google_user->userLocale = Arr::get($sessions,'user.locale');
-                $google_user->userId = Arr::get($sessions,'user.id');
-                $google_user->userVerified_email = Arr::get($sessions,'user.verified_email');
-                $google_user->userLink = Arr::get($sessions,'user.link');
-                $google_user->avatar_original = Arr::get($sessions,'avatar_original');
-                $google_user->save();*/
+//        ddd($sessions);
 
-        $socialLoggedIn = true;
+        DB::table('google_users')->insert([
+            'vpEmail' => Auth::user()->email,
+            'token' => Arr::get($sessions,'token'),
+            'refreshToken' => Arr::get($sessions,'refreshToken'),
+            'expiresIn' => Arr::get($sessions,'expiresIn'),
+            'googleId' => Arr::get($sessions,'id'),
+            'nickname' => Arr::get($sessions,'nickname'),
+            'name' => Arr::get($sessions,'name'),
+            'email' => Arr::get($sessions,'email'),
+            'avatar' => Arr::get($sessions,'avatar'),
+            'userSub' => Arr::get($sessions,'user.sub'),
+            'userName' => Arr::get($sessions,'user.name'),
+            'userGiven_name' => Arr::get($sessions,'user.given_name'),
+            'userFamily_name' => Arr::get($sessions,'user.family_name'),
+            'userPicture' => Arr::get($sessions,'user.picture'),
+            'userEmail' => Arr::get($sessions,'user.email'),
+            'userEmail_verified' => Arr::get($sessions,'user.email_verified'),
+            'userLocale' => Arr::get($sessions,'user.locale'),
+            'userId' => Arr::get($sessions,'user.id'),
+            'userVerified_email' => Arr::get($sessions,'user.verified_email'),
+            'userLink' => Arr::get($sessions,'user.link'),
+            'avatar_original' => Arr::get($sessions,'avatar_original'),
+        ]);
+
+        $socialLoggedIn = $driver;
         return view ('provider.index', compact('socialLoggedIn'));
     }
 

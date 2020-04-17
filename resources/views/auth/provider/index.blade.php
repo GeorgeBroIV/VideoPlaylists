@@ -34,8 +34,8 @@
                                     @endforeach
                                 </form>
 
-@if(session()->exists('Google'))
-<h1>Session</h1>
+@if($socialLoggedIn)
+<h1>Logged In</h1>
     @endif
 
                             @else

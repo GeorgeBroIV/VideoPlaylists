@@ -88,9 +88,7 @@ $driver = 'google';
 		}
 
         // Insert user data into SocialProvider table
-		$socialController = ucfirst($driver) . 'UserController';
-//		return redirect()->action($socialController, $socialUsers);
-        return redirect()->to($driver)->with($socialUsers);
+        return redirect()->to($driver)->with($socialUsers, $driver);
 
 	}
 
