@@ -34,8 +34,6 @@ class GoogleController extends Controller
             } else {
                 // create new record
                 $this->store($sessions);
-                echo ("<p>" . $this->socialLoggedIn . "</p>");
-                echo ("Index");
             }
         }
         // Test to see if user data exists in table
@@ -54,8 +52,10 @@ class GoogleController extends Controller
         // Perhaps this could return back to the WebApp 'Social Login' view to log into
         // other providers and select desired (logged-in) Provider API's / scopes for functionality.
         $socialLoggedIn = $this->socialLoggedIn;
-        ddd($socialLoggedIn);
-        return view ('provider.index', compact('socialLoggedIn'));
+        echo ("<p>" . $this->socialLoggedIn . "</p>");
+        echo ("Store");
+        die;
+//        return view ('provider.index', compact('socialLoggedIn'));
     }
 
     /**
