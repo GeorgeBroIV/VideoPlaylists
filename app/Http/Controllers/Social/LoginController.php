@@ -92,7 +92,7 @@ $driver = 'google';
         $socialUsers = serialize($socialUsers);
 //		return redirect()->action($socialController, $socialUsers);
 //      return redirect()->to('/loginprovider')->with('Google');
-        return redirect()->route($driver, $socialUsers);
+        return redirect()->route($driver);
 	}
 
 	protected function sendFailedResponse($msg = null) {
