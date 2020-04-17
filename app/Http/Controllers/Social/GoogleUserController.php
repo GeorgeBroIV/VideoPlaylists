@@ -25,6 +25,7 @@ class GoogleUserController extends Controller
             die;
         } else {
             // create new record
+ddd($user);
             $this->store($sessions);
         }
         // Test to see if user data exists in table
