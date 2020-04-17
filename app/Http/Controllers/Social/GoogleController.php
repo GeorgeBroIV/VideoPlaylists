@@ -29,10 +29,6 @@ class GoogleController extends Controller
             die;
         } else {
             // create new record
-echo ("no record");
-echo ($user);
-echo ($email);
-die;
             $this->store($sessions);
         }
         // Test to see if user data exists in table
@@ -68,6 +64,8 @@ die;
      */
     public function store($sessions)
     {
+echo ($sessions);
+die;
         DB::table('googles')->insert([
             'token' => Arr::get($sessions,'token'),
             /*
