@@ -21,7 +21,7 @@ class GoogleUserController extends Controller
         {
             array_push($socialUsers, $session);
         }
-        ddd($socialUsers);
+        ddd($sessions);
         // Test to see if user data exists in table
         //  - should be done by LoginController index method when user clicks on 'Social Login' button
         //  - this should determine:
