@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Google;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
