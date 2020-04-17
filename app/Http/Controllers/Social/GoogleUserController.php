@@ -61,9 +61,10 @@ class GoogleUserController extends Controller
     public function store($sessions)
     {
 ddd($sessions);
-/*        DB::table('google_users')->insert([
+        DB::table('google_users')->insert([
             'vpEmail' => Auth::user()->email,
-            'token' => Arr::get($sessions,'token'),
+            ]);
+/*            'token' => Arr::get($sessions,'token'),
             'refreshToken' => Arr::get($sessions,'refreshToken'),
             'expiresIn' => Arr::get($sessions,'expiresIn'),
             'googleId' => Arr::get($sessions,'id'),
