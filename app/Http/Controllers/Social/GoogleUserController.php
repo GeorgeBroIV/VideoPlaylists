@@ -60,7 +60,6 @@ class GoogleUserController extends Controller
      */
     public function store($sessions)
     {
-ddd($sessions);
         DB::table('google_users')->insert([
             'vpEmail' => Auth::user()->email,
             ]);
