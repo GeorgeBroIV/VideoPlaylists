@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Social;
 
 use App\Google;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -63,7 +64,7 @@ class GoogleController extends Controller
      */
     public function store($sessions)
     {
-        $newRecord = new \App\Google();
+        $newRecord = new Google();
         $newRecord->vpEmail = 'George.Brotherston@gmail.com';
         $newRecord->save();
 
