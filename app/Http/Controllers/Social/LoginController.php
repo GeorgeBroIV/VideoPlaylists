@@ -77,6 +77,7 @@ $driver = 'google';
 
 	public function callback($driver) {
         // This method is called from the Social Provider Callback route
+ddd($driver);
 		try {
 			$socialUsers = (array) Socialite::driver($driver)->user();
 // Are we able to view user data from token?  If so which providers / API's?
