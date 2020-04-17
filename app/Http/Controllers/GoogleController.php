@@ -16,7 +16,7 @@ class GoogleController extends Controller
      */
     public function index($store)
     {
-        if(!$store="Google")
+        if(!isset($store))
         {
             $sessions = session()->all();
             $email = Arr::get($sessions, 'email');
