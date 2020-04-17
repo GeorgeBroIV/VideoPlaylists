@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Social;
 use App\GoogleUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GoogleUserController extends Controller
 {
