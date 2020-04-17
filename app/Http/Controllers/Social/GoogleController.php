@@ -17,8 +17,8 @@ class GoogleController extends Controller
     public function index()
     {
         $sessions = session()->all();
-        $user = DB::table('googles')->get()
-            ->where('vpEmail', Arr::get($sessions,'email'));
+        $user = DB::table('googles')->get();
+//            ->where('vpEmail', Arr::get($sessions,'email'));
         if($user->count() > 0) {
             // update record
             echo ("> 0");
