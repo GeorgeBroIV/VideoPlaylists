@@ -25,7 +25,6 @@ class GoogleUserController extends Controller
             die;
         } else {
             // create new record
-ddd($user);
             $this->store($sessions);
         }
         // Test to see if user data exists in table
@@ -62,7 +61,7 @@ ddd($user);
     public function store($sessions)
     {
 ddd($sessions);
-        DB::table('google_users')->insert([
+/*        DB::table('google_users')->insert([
             'vpEmail' => Auth::user()->email,
             'token' => Arr::get($sessions,'token'),
             'refreshToken' => Arr::get($sessions,'refreshToken'),
@@ -84,7 +83,7 @@ ddd($sessions);
             'userVerified_email' => Arr::get($sessions,'user.verified_email'),
             'userLink' => Arr::get($sessions,'user.link'),
             'avatar_original' => Arr::get($sessions,'avatar_original'),
-        ]);
+        ]);*/
 
         $socialLoggedIn = "Google";
 ddd($socialLoggedIn);
