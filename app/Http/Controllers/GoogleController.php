@@ -53,7 +53,7 @@ class GoogleController extends Controller
         // other providers and select desired (logged-in) Provider API's / scopes for functionality.
         $socialLoggedIn = $this->socialLoggedIn;
 
-        return view ('provider.index', compact('socialLoggedIn'));
+        return view ('provider.index', 'socialLoggedIn');
     }
 
     /**
