@@ -65,7 +65,7 @@ class GoogleController extends Controller
     {
         DB::table('googles')
             ->insert([
-            'token' => Arr::get($sessions,'token'),
+            'name' => 'George',
 /*
             'vpEmail' => Auth::user()->email,
             'token' => Arr::get($sessions,'token'),
