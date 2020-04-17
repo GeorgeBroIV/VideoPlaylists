@@ -28,6 +28,7 @@ class GoogleController extends Controller
             // create new record
 echo ("no record");
 echo ($user);
+die;
             $this->store($sessions);
         }
         // Test to see if user data exists in table
