@@ -14,9 +14,11 @@ class GoogleController extends Controller
      * Display a listing of the resource.
      *
      */
-    public function index($store)
+    protected $socialLoggedIn;
+
+    public function index()
     {
-        if(!isset($store))
+        if(!$this->socialLoggedIn="Google")
         {
             $sessions = session()->all();
             $email = Arr::get($sessions, 'email');
@@ -49,7 +51,7 @@ class GoogleController extends Controller
         // This returns user data, and now we can open up API functionality
         // Perhaps this could return back to the WebApp 'Social Login' view to log into
         // other providers and select desired (logged-in) Provider API's / scopes for functionality.
-        return view ('provider.index', compact('store'));
+        return view ('provider.index', compact('socialLoggedIn'));
     }
 
     /**
@@ -92,8 +94,8 @@ class GoogleController extends Controller
             'userLink' => Arr::get($sessions,'user.link'),
             'avatar_original' => Arr::get($sessions,'avatar_original'),
         ]);
-        $socialLoggedIn = "Google";
-        return $socialLoggedIn;
+        $this->socialLoggedIn = "Google";
+        return;
     }
 
     /**
