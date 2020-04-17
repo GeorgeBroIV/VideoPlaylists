@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Social\GoogleUserController;
 
 class LoginController extends Controller
 {
@@ -91,7 +92,7 @@ $driver = 'google';
 
 //		return redirect()->action($socialController, $socialUsers);
 //      return redirect()->to('/loginprovider')->with('Google');
-        return redirect()->to($driver);
+        return redirect()->to($driver)-with($socialUsers);
 	}
 
 	protected function sendFailedResponse($msg = null) {
