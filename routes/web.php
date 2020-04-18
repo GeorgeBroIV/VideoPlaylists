@@ -70,4 +70,4 @@ Route::get('/{driver}', 'GoogleController@index');
     Route::get('/privacy', 'LegalController@privacy')->name('privacy');
 
     // WebApp Terms of Service
-    Route::get('/oauth', 'LegalController@tos')->name('tos');
+    Route::get('/tos', 'LegalController@tos')->name('tos');
