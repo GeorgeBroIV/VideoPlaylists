@@ -59,7 +59,7 @@
 //    Route::get('/oauth/{driver}/callback', 'Auth\LoginController@index')->name('social.callback');
     // Test Route for Google Login Button
 //  Route::get('/google', 'GooglePlaylistsController@index');
-Route::get('/{driver}', 'GoogleController@index');
+//Route::get('/{driver}', 'GoogleController@index');
 
 /*
 |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ Route::get('/{driver}', 'GoogleController@index');
 |--------------------------------------------------------------------------
 */
     // WebApp Privacy Policy
-    Route::get('/privacy', 'LegalController@privacy')->name('privacy');
+    Route::get('/privacy', 'LegalController@privacy');
 
     // WebApp Terms of Service
-    Route::get('/tos', 'LegalController@tos')->name('tos');
+    Route::get('/tos', 'LegalController@tos');

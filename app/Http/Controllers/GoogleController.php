@@ -73,9 +73,15 @@ class GoogleController extends Controller
      */
     public function store($sessions)
     {
+        if (isset(Auth::user()->email)) {
+            $userEmail = Auth::user()->email;
+        } else {
+            $userEmail = "";
+        }
+
         DB::table('googles')
             ->insert([
-            'vpEmail' => Auth::user()->email,
+            'vpEmail' => $userEmail,
             'token' => Arr::get($sessions,'token'),
             'refreshToken' => Arr::get($sessions,'refreshToken'),
             'expiresIn' => Arr::get($sessions,'expiresIn'),
