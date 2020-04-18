@@ -26,7 +26,7 @@ class GoogleController extends Controller
                 ->where('vpEmail', $email)
                 ->get();
             if ($user->count() > 0) {
-                // update record
+// IF THE USER HAS A RECORD IN THE DATABASE
                 echo("> 0");
                 echo($email);
                 echo($user);

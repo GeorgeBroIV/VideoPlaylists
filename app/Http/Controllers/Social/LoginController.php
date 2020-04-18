@@ -15,6 +15,21 @@ class LoginController extends Controller
      * Display a listing of available social providers.
      *   - called when user clicks on 'Social Login' button
      */
+// TODO Left Pane (small width): Social Provider Information
+//   Top: Log In (small icons)
+//   Middle: Full width Rectangle with Logged-in Providers
+//     - hover changes color
+//     - select (by click) selects the Provider and Populates Middle Pane
+//     Look and feel: each rectangle
+//       - top to have logo and name
+//       - middle to list Authorized API's
+//       - Italicized bottom to have instruction "Click this panel to activate API selections
+//   Bottom: Log Out
+
+// TODO Center Pane: Left side: API Checkboxes
+// TODO Center Pane: Right side: Scope Checkboxes for selected API
+
+// TODO Right Pane:  API Description (on top) with Scope Description Bullet List (underneath)
 	public function index()
 	{
 	    // Populate $users array with current WebApp user info to personalize View
@@ -41,6 +56,10 @@ class LoginController extends Controller
             $providers = null;
         }
 
+// TODO Add code for: 'If user is already logged into any Social Providers, filter that Social Provider out'
+// Dim the button with overlay of "Logged In" -- OR -- Move button to different "Log Out Providers" view card
+// with Card Header of "Logged In Providers" and Card Body Header of "Log Out of Social Provider"
+
         // Return a View that has access to populated arrays
         return view('auth.provider.index', compact('providers', 'users'));
 	}
@@ -59,15 +78,26 @@ class LoginController extends Controller
 	    // SLOPPY - see if I can pull the provider from the $request parameter from login(Request $request)
         $driver = array_key_last($_REQUEST);
 $driver = 'google';
+
+        // BEFORE EXECUTING THIS CODE, LIST THE ACTIVE API'S AND SCOPES THAT THE USER MAY WANT TO USE
+
+
+
+
 		try {
             // This is what logs the user into the Social Provider
+            //
+            // AFTER USER SELECTS API'S AND SCOPES, THEN THIS METHOD SHOULD BE CALLED TO LOG THE USER IN WITH THE
+            // SCOPES ONLY, SINCE THEY ARE 1:1 CORRELATED TO THE ASSOCIATED API
+            $scopes = [
+                'openid',
+                'profile',
+                'email',
+                'https://www.googleapis.com/auth/youtube.readonly'
+            ];
 		    return Socialite::driver($driver)
-                ->scopes([
-                    'openid',
-                    'profile',
-                    'email',
-                    'https://www.googleapis.com/auth/youtube.readonly'
-                ])
+                // SCOPES TO BE COLLECTED INTO AN ARRAY AND PASSED HERE
+                ->scopes($scopes)
                 ->redirect();
 		} catch (Exception $e) {
 			return $this->sendFailedResponse($e->getMessage());

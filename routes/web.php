@@ -60,3 +60,14 @@
     // Test Route for Google Login Button
 //  Route::get('/google', 'GooglePlaylistsController@index');
 Route::get('/{driver}', 'GoogleController@index');
+
+/*
+|--------------------------------------------------------------------------
+| Legal routes
+|--------------------------------------------------------------------------
+*/
+    // WebApp Privacy Policy
+    Route::get('/privacy', 'LegalController@privacy')->name('privacy');
+
+    // WebApp Terms of Service
+    Route::get('/oauth', 'LegalController@tos')->name('tos');
