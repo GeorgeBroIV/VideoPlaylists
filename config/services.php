@@ -36,4 +36,15 @@ return [
 		'redirect'      => env('APP_URL') . '/oauth/google/callback'
 	],
 
+    'linkedin' => [
+        'client_id'     => env('LINKEDIN_CLIENT_ID'),
+        'client_secret' => env('LINKEDIN_CLIENT_SECRET'),
+        'redirect'      => env('APP_URL') . '/oauth/linkedin/callback'
+    ],
+
+    'twitter' => [
+        'client_id'     => env('TWITTER_CLIENT_ID'),
+        'client_secret' => env('TWITTER_CLIENT_SECRET'),
+        'redirect'      => env('APP_URL') . '/oauth/twitter/callback'
+    ],
 ];
