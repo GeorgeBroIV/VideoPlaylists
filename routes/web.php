@@ -9,7 +9,7 @@
 |--------------------------------------------------------------------------
 */
     // WebApp authentication (login, redirects, etc)
-    Auth::routes();
+    Auth::routes(['verify' => true]);
 
     // The 'get' route handles what would normally result in an untrapped error (e.g. a user right-clicking "Logout" and opening in a new tab).
     Route::get('/logout', 'Auth\LogoutController@logout')->name('logout');
@@ -27,21 +27,14 @@
     // Home view
     Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
-    // User views
-    Route::resource('/users', 'UserController')->middleware('auth');
-
     // Social API view
-    Route::get('/api', 'Social\APIController@index')->middleware('auth')->name('api');
+    Route::get('/api', 'Social\APIController@index')->middleware('verified')->name('api');
 
     // Social API Scope view
-    Route::get('/scopes', 'Social\ScopeController@index')->middleware('auth')->name('scopes');
+    Route::get('/scopes', 'Social\ScopeController@index')->middleware('verified')->name('scopes');
 
     // Social Login (WebApp) view
-    Route::get('/loginprovider','Social\LoginController@index')->name('loginprovider')->middleware('auth');
-
-    // Social Provider view
-    Route::get('/providers', 'Social\ProviderController@index')->middleware('auth')->name('providers');
-//  Route::get('/providers/create', 'ProviderController@create');
+    Route::get('/socialLogin','Social\LoginController@index')->name('socialLogin')->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +53,26 @@
     // Test Route for Google Login Button
 //  Route::get('/google', 'GooglePlaylistsController@index');
 //Route::get('/{driver}', 'GoogleController@index');
+
+/*
+|--------------------------------------------------------------------------
+| Admin routes
+|--------------------------------------------------------------------------
+*/
+    // Admin view
+// TODO Develop route variables
+//    Route::get('/admin/{slug}', 'Admin\SlugController@index')->name('admin');
+
+    // User views
+    Route::resource('/admin/users', 'Admin\UserController')->middleware('verified');
+
+    // Social Provider view
+    Route::get('/providers', 'Social\SocialProviderController@index')->middleware('verified')->name('providers');
+//  Route::get('/providers/create', 'ProviderController@create');
+
+    // Profile Routes (middleware is in 'ProfileController _construct method)
+    Route::get('/profile', 'Admin\ProfileController@index')->name('profile')->middleware('auth');
+    Route::post('/profile/update', 'Admin\ProfileController@updateProfile')->name('profile.update')->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------

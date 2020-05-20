@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\View\View;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -45,11 +46,23 @@ class Handler extends ExceptionHandler
      * @param  \Illuminate\Http\Request  $request
      * @param  \Throwable  $exception
      * @return \Symfony\Component\HttpFoundation\Response
-     *
+     * at_return View
      * @throws \Throwable
      */
     public function render($request, Throwable $exception)
     {
-        return parent::render($request, $exception);
+        if($exception->getMessage() == "CSRF token mismatch.") {
+            $message = $exception->getMessage();
+// TODO Add CSRF token mismatch error handling for expired pages
+// https://stackoverflow.com/questions/49864923/page-expired-exception-in-laravel
+            if(Auth()->user()) {
+                return redirect()->route('home', compact('message'));
+            } else {
+                return redirect()->action('Auth\LoginController@login')->with('status', $message);
+            }
+        } else {
+// TODO Figure this out
+            return parent::render($request, $exception);
+        }
     }
 }

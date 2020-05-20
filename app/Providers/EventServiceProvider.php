@@ -11,12 +11,19 @@ class EventServiceProvider extends ServiceProvider
 {
     /**
      * The event listener mappings for the application.
+     * https://laravel.com/docs/7.x/authentication#events
      *
      * @var array
      */
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        'Illuminate\Auth\Events\Registered' => [
+            'App\Listeners\LogRegisteredUser',
+        ],
+        'Illuminate\Auth\Events\Verified' => [
+            'App\Listeners\LogVerifiedUser',
         ],
     ];
 

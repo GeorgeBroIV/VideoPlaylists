@@ -14,17 +14,26 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
+            // This information is only for the WebApp user info
+            // Social OAuth info are in other tables
             $table->id();
+            $table->string('username')->unique();
             $table->string('firstname');
 	        $table->string('lastname');
-            $table->string('nickname');
-	        $table->string('userid')->unique();
+            $table->string('displayname')->nullable();
+            $table->string('role')->default('Guest');
             $table->string('email')->unique();
-            $table->string('photo');
-            $table->string('role');
+            $table->string('avatar')->nullable();
+            $table->string('password');
+            $table->boolean('visible')->default(1)->nullable();
             $table->boolean('active')->default(1);
-            $table->boolean('admin')->default(0);
+            $table->text('notes')->nullable();
+            $table->dateTime('email_verified_at')->nullable();
+            $table->rememberToken();
             $table->timestamps();
+            $table->foreignId('updated_by')->nullable();
+            $table->softDeletes();
+            $table->foreignId('deleted_by')->nullable();
         });
     }
 
