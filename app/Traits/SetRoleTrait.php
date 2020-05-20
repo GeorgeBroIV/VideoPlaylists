@@ -5,7 +5,7 @@ namespace App\Traits;
 trait SetRoleTrait
 {
     /**
-     * Code Author
+     * Code Authord
      * George T. Brotherston IV
      * StackOverflow: https://stackoverflow.com/users/13029167/george-brotherston
      * Github: https://github.com/GeorgeBroIV
