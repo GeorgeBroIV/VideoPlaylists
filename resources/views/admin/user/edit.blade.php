@@ -13,7 +13,7 @@
                             @method('edit')
                             @csrf
                             <table>
-                                @include('Admin.user.tablehead')
+                                @include('admin.user.tablehead')
                                 @foreach($users as $user)
                                     <tr>
                                         <td style="padding-left: 10px; padding-right: 10px">
