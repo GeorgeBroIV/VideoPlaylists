@@ -39,6 +39,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
+    /* Custom User Properties
+     *
+     */
+    protected $rolesAdmin = ['Admin', 'Reviewer', 'Verified', 'Registered'];
+    protected $rolesReviewer = ['Reviewer', 'Verified', 'Registered'];
+    protected $rolesVerified = ['Verified', 'Registered'];
+
+
     /* Custom User Methods
      *  https://stackoverflow.com/questions/32437384/laravel-custom-user-specific-functions
      */
@@ -65,24 +73,38 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isVerified()
     {
         $verified = false;
-        if(isset($this->attributes['email_verified_at'])) {
+        if(in_array($this->attributes['role'], $this->rolesVerified)) {
             $verified = true;
         }
         return $verified;
     }
 
     /**
-     * Usage: Auth()->user()->isVerified() (boolean)
+     * Usage: Auth()->user()->isReviewer() (boolean)
      *
      * @return boolean
      */
     public function isReviewer()
     {
         $reviewer = false;
-        if($this->attributes['role'] == 'Reviewer') {
+        if(in_array($this->attributes['role'],$this->rolesReviewer)) {
             $reviewer = true;
         }
         return $reviewer;
+    }
+
+    /**
+     * Usage: Auth()->user()->isAdmin() (boolean)
+     *
+     * @return boolean
+     */
+    public function isAdmin()
+    {
+        $admin = false;
+        if(in_array($this->attributes['role'], $this->rolesAdmin)) {
+            $admin = true;
+        }
+        return $admin;
     }
 
     /**

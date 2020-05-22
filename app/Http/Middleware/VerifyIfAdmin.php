@@ -16,7 +16,7 @@ class VerifyIfAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth()->user()->hasRole('Admin')) {
+        if (!Auth()->check() || !Auth()->user()->hasRole('Admin')) {
             return redirect(RouteServiceProvider::HOME);
         }
         return $next($request);

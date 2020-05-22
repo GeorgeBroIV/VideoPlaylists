@@ -16,7 +16,7 @@ class VerifyIfReviewer
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth()->user()->hasRole('Reviewer')) {
+        if (!Auth()->check() || !Auth()->user()->hasRole('Reviewer')) {
             return redirect(RouteServiceProvider::HOME);
         }
         return $next($request);
