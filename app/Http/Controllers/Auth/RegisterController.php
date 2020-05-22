@@ -58,7 +58,7 @@ class RegisterController extends Controller
     {
         // Creates a new user
         $user = $this->create($request->all());
-        // Logs the user in (therefore discoverable via Auth()->user()')
+        // Logs the user in (therefore discoverable via 'Auth()->user()')
         $this->guard()->login($user);
         // Fires a listenable event
         event(new Registered($user));

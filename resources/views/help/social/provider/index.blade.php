@@ -11,7 +11,7 @@
 						</div>
 						<div class="card-body">
 								<table>
-                                    @include('Help.Social.provider.tablehead')
+                                    @include('help.social.provider.tablehead')
 									    @foreach($providers as $provider)
 										<tr>
 											<td style="padding-left: 10px; padding-right: 10px">

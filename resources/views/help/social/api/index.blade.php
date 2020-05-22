@@ -11,7 +11,7 @@
                     </div>
                     <div class="card-body">
                         <table>
-                            @include('Help.Social.api.tablehead')
+                            @include('help.social.api.tablehead')
                             @foreach($apis as $api)
                                 <tr>
                                     <td style="padding-left: 5px; padding-right: 5px">

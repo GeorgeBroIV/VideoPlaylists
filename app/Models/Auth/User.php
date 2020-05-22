@@ -39,13 +39,26 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
     /**
-     * Accessor Method for "studly" cased name.
+     * Custom User Methods
      *
-     * https://laravel.com/docs/7.x/eloquent-mutators#defining-an-accessor
-     * Use: getFooAttribute will allow you to access Foo via auth()->user()->foo
+     * https://stackoverflow.com/questions/32437384/laravel-custom-user-specific-functions
+     * Use: $var = Auth()->user()->role();
+     * Use: Custom blade directives
      */
-    public function getAvatarAttribute()
+    public function isVisible()
     {
-        return $this->attributes['avatar'];
+        return $this->attributes['visible'];
+    }
+
+    /**
+     * Custom User Methods
+     *
+     * https://stackoverflow.com/questions/32437384/laravel-custom-user-specific-functions
+     * Use: $var = Auth()->user()->visible();
+     * Use: Custom blade directives
+     */
+    public function hasRole($role)
+    {
+        return $this->role == $role;
     }
 }

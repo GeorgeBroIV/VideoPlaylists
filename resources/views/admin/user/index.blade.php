@@ -5,6 +5,16 @@
 		<div class="row justify-content-center">
 			<div class="col-lg-auto">
 				<div class="card">
+
+
+@hasRole('Admin')
+    <p>ADMIN</p>
+<p>User role: {{ Auth()->user()->role }}</p>
+@endRole
+
+@isVisible
+    <p>VISIBLE</p>
+@endVisible
 					<div class="card-header">
 						Admin Settings - '{{ env('APP_NAME') }}' Users
 					</div>

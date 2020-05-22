@@ -28,6 +28,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        $visible = Auth()->user()->isVisible();
+        ddd($visible);
         $user = Auth()->user();
         return view('admin.user.profile', compact('user'));
     }

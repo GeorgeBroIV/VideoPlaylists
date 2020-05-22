@@ -14,21 +14,23 @@
 
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-
-                <!-- START - ADMIN Section -->
-                <!-- TODO Add Nav Links - ADMIN -->
-                <!-- Sample -->
+                <!-- Home -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">
                         {{ __('Home') }}
                     </a>
                 </li>
-                <!-- Sample -->
-                <li>
-                    <a class="nav-link" href="{{ route('users.index') }}">
-                        {{ __('Users') }}
-                    </a>
-                </li>
+
+                <!-- START - ADMIN Section -->
+                @hasRole('Admin')
+                    <!-- Users -->
+                    <li>
+                        <a class="nav-link" href="{{ route('users.index') }}">
+                            {{ __('Users') }}
+                        </a>
+                    </li>
+                    <!-- END Users -->
+                @endRole
                 <!-- END - ADMIN Section -->
 
                 <!-- START - AUTH USER Section -->
@@ -68,9 +70,6 @@
                             @endif
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('socialLogin') }}">
-                                {{ __('Social Login') }}
-                            </a>
                             <a class="dropdown-item" href="{{ route('profile') }}">
                                 {{ __('Profile') }}
                             </a>

@@ -37,6 +37,13 @@ class LoginController extends Controller
      * @var string
      */
     protected $username;
+
+    /**
+     * Login role to be used by the controller.
+     *
+     * @var string
+     */
+
     /**
      * Create a new controller instance.
      *

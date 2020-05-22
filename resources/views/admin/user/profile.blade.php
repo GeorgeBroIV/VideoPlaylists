@@ -12,6 +12,14 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+
+                        @hasRole('Admin')
+                            <p>ADMIN</p>
+                        @endhasRole
+
+
+
+
                         <div class="container">
                             <div class="row">
                                 <div class="col-12">

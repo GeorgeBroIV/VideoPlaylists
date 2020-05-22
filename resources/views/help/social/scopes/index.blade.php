@@ -11,7 +11,7 @@
                     </div>
                     <div class="card-body">
                         <table>
-                            @include('Help.Social.scopes.tablehead')
+                            @include('help.social.scopes.tablehead')
                             @foreach($scopes as $scope)
                                 <tr>
                                     <td style="padding-left: 5px; padding-right: 5px">

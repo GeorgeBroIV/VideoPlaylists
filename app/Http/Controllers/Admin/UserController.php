@@ -25,40 +25,41 @@ class UserController extends Controller
     {
         /* Data to populate User Role view 'rendered table' column header values */
         // Query the database to obtain Role names
-        $roles = DB::table('roles')
-            ->select('name', 'active')
-            ->orderBy('order')
-            ->get();
+//        $roles = DB::table('roles')
+//            ->select('name', 'active')
+//            ->orderBy('order')
+//            ->get();
 
         /* Data to populate User information */
         // Query the database to obtain User and Role information into $users collection
-        $users=User::with('roles')->get();
+//        $users=User::with('roles')->get();
 $users=User::all();
 
         /* Data to populate User Role information */
         // Create $userRoles array from $users collection
-        $userRoles = $users->toArray();
+//        $userRoles = $users->toArray();
         // Iterate through $userRoles 1st dimension (top level) array elements
         //  - top level array = 1st level (main) array (all users) - each element is a user
-       for($i = 0; $i < count($userRoles); $i++)
-        {
+//       for($i = 0; $i < count($userRoles); $i++)
+//        {
             // Iterate through $userRoles 2nd dimension (2nd level) subarray elements
             //  - top level subarrays = 2nd level arrays (each user) - each element are the fields associated with each user
-            for($j = 0; $j < count($userRoles[$i]['roles']); $j++)
-            {
-                // Create 2nd level array key for each user role identified in 3rd level array 'roles'
-                $key = $j . '.role';
+//            for($j = 0; $j < count($userRoles[$i]['roles']); $j++)
+//            {
+//                // Create 2nd level array key for each user role identified in 3rd level array 'roles'
+//                $key = $j . '.role';
                 // Pull 3rd level 'user roles' and add to 2nd level array elements with new key for each 3rd level role name
-                $userRoles[$i][$key] = Arr::pull($userRoles[$i]['roles'][$j], 'name');
-            }
+//                $userRoles[$i][$key] = Arr::pull($userRoles[$i]['roles'][$j], 'name');
+//            }
             // Remove 'roles' (3rd level) arrays from each 'user' (2nd level) arrays
-            unset($userRoles[$i]['roles']);
+//            unset($userRoles[$i]['roles']);
             // Now we have flattened 2nd level array (representing each user) for easy parsing in view
-        }
+//        }
 
         // Return view with array information
 //	    return view ('Admin.user.index', compact( 'roles', 'users', 'userRoles'));
-        return view ('Admin.user.index', compact('users'));
+//        return view ('Admin.user.index', compact('users'));
+        return view('admin.user.index', compact('users'));
     }
 
     /**

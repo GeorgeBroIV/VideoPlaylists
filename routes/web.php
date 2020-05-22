@@ -28,13 +28,13 @@
     Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
     // Social API view
-    Route::get('/api', 'Social\APIController@index')->middleware('verified')->name('api');
+//    Route::get('/api', 'Social\APIController@index')->middleware('verified')->name('api');
 
     // Social API Scope view
-    Route::get('/scopes', 'Social\ScopeController@index')->middleware('verified')->name('scopes');
+//    Route::get('/scopes', 'Social\ScopeController@index')->middleware('verified')->name('scopes');
 
     // Social Login (WebApp) view
-    Route::get('/socialLogin','Social\LoginController@index')->name('socialLogin')->middleware('auth');
+//    Route::get('/socialLogin','Social\LoginController@index')->name('socialLogin')->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -42,13 +42,13 @@
 |--------------------------------------------------------------------------
 */
     // Called from Auth\LoginController@show "sendFailedResponse" method
-    Route::get('/auth/social', 'Social\LoginController@login')->name('social.login');
+//    Route::get('/auth/social', 'Social\LoginController@login')->name('social.login');
 
     // Called from View "auth.provider.index" when user clicks one of the Social Provider Login buttons
-    Route::post('/oauth', 'Social\LoginController@login')->name('social.oauth');
+//    Route::post('/oauth', 'Social\LoginController@login')->name('social.oauth');
 
     // Social Provider Callback
-    Route::get('/oauth/{driver}/callback', 'Social\LoginController@callback')->name('social.callback');
+//    Route::get('/oauth/{driver}/callback', 'Social\LoginController@callback')->name('social.callback');
 //    Route::get('/oauth/{driver}/callback', 'Auth\LoginController@index')->name('social.callback');
     // Test Route for Google Login Button
 //  Route::get('/google', 'GooglePlaylistsController@index');
@@ -67,7 +67,7 @@
     Route::resource('/admin/users', 'Admin\UserController')->middleware('verified');
 
     // Social Provider view
-    Route::get('/providers', 'Social\SocialProviderController@index')->middleware('verified')->name('providers');
+//    Route::get('/providers', 'Social\SocialProviderController@index')->middleware('verified')->name('providers');
 //  Route::get('/providers/create', 'ProviderController@create');
 
     // Profile Routes (middleware is in 'ProfileController _construct method)
