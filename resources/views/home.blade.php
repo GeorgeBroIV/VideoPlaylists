@@ -22,19 +22,30 @@
                         @elseif (isset($message))
                             You've been redirected here due to the following error: "{{ $message }}".  If this was unexpected please send a quick e-mail to {{ env('WEBMASTER') }}.
                         @endif
-                        <p>
-                            @verified
-                                As a verified user, you can now
+
+                            @isAdmin
+                                <p>
+                                    As an Admin you have full access to all capabilities of this website, including all permissions granted
+                                    to 'Reviewer' and 'Verified' users.
+                                </p>
                             @else
-                                Once you verify your e-mail address with this system (check your e-mail) you'll be able to
-                            @endverified
-                                log into additional Social Providers (Google, etc) to incorporate streamlined features of these providers into
-                                this web application
-                            @verified
-                                by clicking on 'Social Login' under '{{ Auth::user()->firstname }}' in the top Navigation Bar.
-                            @else
-                                .
-                            @endverified
+                                @isVerified
+                                <p>
+                                    As a Verified user, you can now
+                                @else
+                                    <p>
+                                        Once you verify your e-mail address with this system (check your e-mail) you'll be able to
+                                @endisVerified
+                                        log into additional Social Providers (Google, etc) to incorporate streamlined features of these providers into
+                                        this web application
+                                @isVerified
+                                        by clicking on 'Social Login' under '{{ Auth::user()->firstname }}' in the top Navigation Bar.
+                                    </p>
+                                @else
+                                    .
+                                    </p>
+                                @endisVerified
+                            @endisAdmin
                         </p>
                     </div>
                 </div>

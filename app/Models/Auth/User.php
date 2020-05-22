@@ -72,6 +72,20 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Usage: Auth()->user()->isVerified() (boolean)
+     *
+     * @return boolean
+     */
+    public function isReviewer()
+    {
+        $reviewer = false;
+        if($this->attributes['role'] == 'Reviewer') {
+            $reviewer = true;
+        }
+        return $reviewer;
+    }
+
+    /**
      * Custom User Methods
      *
      * Use: $var = Auth()->user()->hasRole($role);

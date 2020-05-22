@@ -22,7 +22,7 @@
                 </li>
 
                 <!-- START - ADMIN Section -->
-                @hasRole('Admin')
+                @isAdmin
                     <!-- Users -->
                     <li>
                         <a class="nav-link" href="{{ route('users.index') }}">
@@ -30,7 +30,7 @@
                         </a>
                     </li>
                     <!-- END Users -->
-                @endRole
+                @endisAdmin
                 <!-- END - ADMIN Section -->
 
                 <!-- START - AUTH USER Section -->
