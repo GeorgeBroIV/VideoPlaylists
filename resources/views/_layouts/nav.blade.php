@@ -15,11 +15,13 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <!-- Home -->
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">
-                        {{ __('Home') }}
-                    </a>
-                </li>
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}">
+                            {{ __('Home') }}
+                        </a>
+                    </li>
+                @endauth
 
                 <!-- START - ADMIN Section -->
                 @isAdmin
