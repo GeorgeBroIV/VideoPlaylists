@@ -3,84 +3,82 @@
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Authentication routes
-|--------------------------------------------------------------------------
-*/
-    // WebApp authentication (login, redirects, etc)
-    Auth::routes(['verify' => true]);
+    /*
+    |--------------------------------------------------------------------------
+    | Guest routes
+    |--------------------------------------------------------------------------
+    */
+        // Welcome view
+        Route::get('/', 'WelcomeController@index');
+        Route::get('/welcome', 'WelcomeController@index')->name('welcome');
 
-    // The 'get' route handles what would normally result in an untrapped error (e.g. a user right-clicking "Logout" and opening in a new tab).
-    Route::get('/logout', 'Auth\LogoutController@logout')->name('logout');
-    Route::post('/logout', 'Auth\LogoutController@logout')->name('logout');
+        // WebApp Privacy Policy and Terms of Service
+        Route::get('/privacy', 'Help\LegalController@privacy')->name('privacy');
+        Route::get('/tos', 'Help\LegalController@tos')->name('tos');
 
-/*
-|--------------------------------------------------------------------------
-| View routes
-|--------------------------------------------------------------------------
-*/
-    // Welcome view
-    Route::get('/', 'WelcomeController@index');
-    Route::get('/welcome', 'WelcomeController@index')->name('welcome');
+    /*
+    |--------------------------------------------------------------------------
+    | Registered routes
+    |--------------------------------------------------------------------------
+    */
 
-    // Home view
-    Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+        // WebApp authentication (login, redirects, etc)
+        Auth::routes(['verify' => true]);
 
-    // Social API view
-//    Route::get('/api', 'Social\APIController@index')->middleware('verified')->name('api');
+        // Home view
+        Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
-    // Social API Scope view
-//    Route::get('/scopes', 'Social\ScopeController@index')->middleware('verified')->name('scopes');
+        // The 'get' route handles what would normally result in an untrapped error (e.g. a user right-clicking "Logout" and opening in a new tab).
+        Route::get('/logout', 'Auth\LogoutController@logout')->name('logout')->middleware('auth');
+        Route::post('/logout', 'Auth\LogoutController@logout')->name('logout')->middleware('auth');
 
-    // Social Login (WebApp) view
-//    Route::get('/socialLogin','Social\LoginController@index')->name('socialLogin')->middleware('auth');
+    /*
+    |--------------------------------------------------------------------------
+    | Verified routes
+    |--------------------------------------------------------------------------
+    */
 
-/*
-|--------------------------------------------------------------------------
-| Social Provider routes
-|--------------------------------------------------------------------------
-*/
-    // Called from Auth\LoginController@show "sendFailedResponse" method
-//    Route::get('/auth/social', 'Social\LoginController@login')->name('social.login');
+        // Profile Routes
+        Route::get('/profile', 'Profile\ProfileController@index')->name('profile')->middleware('verified');
+        Route::post('/profile/edit', 'Profile\ProfileController@edit')->name('profile.edit')->middleware('verified');
 
-    // Called from View "auth.provider.index" when user clicks one of the Social Provider Login buttons
-//    Route::post('/oauth', 'Social\LoginController@login')->name('social.oauth');
+        // Social API view
+        //    Route::get('/api', 'Social\APIController@index')->middleware('verified')->name('api');
 
-    // Social Provider Callback
-//    Route::get('/oauth/{driver}/callback', 'Social\LoginController@callback')->name('social.callback');
-//    Route::get('/oauth/{driver}/callback', 'Auth\LoginController@index')->name('social.callback');
-    // Test Route for Google Login Button
-//  Route::get('/google', 'GooglePlaylistsController@index');
-//Route::get('/{driver}', 'GoogleController@index');
+        // Social API Scope view
+        //    Route::get('/scopes', 'Social\ScopeController@index')->middleware('verified')->name('scopes');
 
-/*
-|--------------------------------------------------------------------------
-| Admin routes
-|--------------------------------------------------------------------------
-*/
-    // Admin view
-// TODO Develop route variables
-//    Route::get('/admin/{slug}', 'Admin\SlugController@index')->name('admin');
+        // Social Login (WebApp) view
+        //    Route::get('/socialLogin','Social\LoginController@index')->name('socialLogin')->middleware('auth');
 
-    // User views
-    Route::resource('/admin/users', 'Admin\UserController')->middleware('verified');
+        // Called from Auth\LoginController@show "sendFailedResponse" method
+        //    Route::get('/auth/social', 'Social\LoginController@login')->name('social.login');
 
-    // Social Provider view
-//    Route::get('/providers', 'Social\SocialProviderController@index')->middleware('verified')->name('providers');
-//  Route::get('/providers/create', 'ProviderController@create');
+        // Called from View "auth.provider.index" when user clicks one of the Social Provider Login buttons
+        //    Route::post('/oauth', 'Social\LoginController@login')->name('social.oauth');
 
-    // Profile Routes (middleware is in 'ProfileController _construct method)
-    Route::get('/profile', 'Admin\ProfileController@index')->name('profile')->middleware('auth');
-    Route::post('/profile/update', 'Admin\ProfileController@updateProfile')->name('profile.update')->middleware('auth');
+        // Social Provider Callback
+       //    Route::get('/oauth/{driver}/callback', 'Social\LoginController@callback')->name('social.callback');
+        //    Route::get('/oauth/{driver}/callback', 'Auth\LoginController@index')->name('social.callback');
+        // Test Route for Google Login Button
+        //  Route::get('/google', 'GooglePlaylistsController@index');
+        //Route::get('/{driver}', 'GoogleController@index');
 
-/*
-|--------------------------------------------------------------------------
-| Legal routes
-|--------------------------------------------------------------------------
-*/
-    // WebApp Privacy Policy
-    Route::get('/privacy', 'LegalController@privacy');
+    /*
+    |--------------------------------------------------------------------------
+    | Reviewer routes
+    |--------------------------------------------------------------------------
+    */
+        // To Define Here
 
-    // WebApp Terms of Service
-    Route::get('/tos', 'LegalController@tos');
+    /*
+    |--------------------------------------------------------------------------
+    | Admin routes
+    |--------------------------------------------------------------------------
+    */
+        // User views
+        Route::resource('/admin/users', 'Admin\UserController')->middleware('isAdmin');
+
+        // Social Provider view
+        //    Route::get('/providers', 'Social\SocialProviderController@index')->middleware('verified')->name('providers');
+        //  Route::get('/providers/create', 'ProviderController@create');

@@ -13,7 +13,7 @@ class LegalController extends Controller
      */
     public function privacy()
     {
-        return view('legal.privacy');
+        return view('help.legal.privacy');
     }
 
     /**
@@ -21,6 +21,6 @@ class LegalController extends Controller
      */
     public function tos()
     {
-        return view('legal.tos');
+        return view('help.legal.tos');
     }
 }

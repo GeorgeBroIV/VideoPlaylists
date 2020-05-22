@@ -9,11 +9,11 @@
                         Dashboard
                     </div>
                     <div class="card-body">
-@if (session('status'))
-    <div class="alert alert-success" role="alert">
-        {{ session('status') }}
-    </div>
-@endif
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
                         <p>
                             Hi {{ Auth::user()->firstname }}, you are now logged into the {{ env('APP_NAME') }} web application.
                         </p>

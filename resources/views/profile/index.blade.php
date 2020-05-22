@@ -12,14 +12,6 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-
-                        @hasRole('Admin')
-                            <p>ADMIN</p>
-                        @endhasRole
-
-
-
-
                         <div class="container">
                             <div class="row">
                                 <div class="col-12">
@@ -37,7 +29,7 @@
                                             </ul>
                                         </div>
                                     @endif
-                                    <form action="{{ route('profile.update') }}" method="POST" role="form" enctype="multipart/form-data">
+                                    <form action="{{ route('profile.edit') }}" method="POST" role="form" enctype="multipart/form-data">
                                         @csrf
                                         <!-- User Name (disabled) -->
                                         <!-- TODO Add Ability to Change User Name, with validation constraints -->
@@ -112,7 +104,7 @@
                                             <div class="form-group row mb-0 mt-5">
                                                 <div class="col-md-8 offset-md-4">
                                                     <button type="submit" class="btn btn-primary">
-                                                        Update Profile
+                                                        Edit Profile
                                                     </button>
                                                     &nbsp;&nbsp;&nbsp;
                                                     <a href="{{ route('profile') }}" class="btn btn-secondary">

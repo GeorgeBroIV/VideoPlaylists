@@ -10,8 +10,30 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
+/**
+ * Framework Author
+ * Laravel
+ * https://laravel.com/
+ *
+ * Customized Code Author
+ * George T. Brotherston IV
+ * StackOverflow: https://stackoverflow.com/users/13029167/george-brotherston
+ * Github: https://github.com/GeorgeBroIV
+ *
+ * This controller handles routed HTTP requests for the 'users' models, and returns
+ * associated views based on the application logic contained herein (MVC paradigm).
+ **/
+
 class UserController extends Controller
 {
+    /**
+     * Controller Constructor
+     *   - applies middleware
+     */
+    public function __construct() {
+        $this->middleware('isAdmin');
+    }
+
     /**
      * Display a listing of User information.
      *

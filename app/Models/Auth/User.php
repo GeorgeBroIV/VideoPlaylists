@@ -38,24 +38,43 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'remember_token',
     ];
+
+    /* Custom User Methods
+     *  https://stackoverflow.com/questions/32437384/laravel-custom-user-specific-functions
+     */
+
     /**
-     * Custom User Methods
+     * Usage: Auth()->user()->isVisible() (boolean)
      *
-     * https://stackoverflow.com/questions/32437384/laravel-custom-user-specific-functions
-     * Use: $var = Auth()->user()->role();
-     * Use: Custom blade directives
+     * @return boolean
      */
     public function isVisible()
     {
-        return $this->attributes['visible'];
+        $visible = false;
+        if($this->attributes['visible'] == 1) {
+            $visible = true;
+        }
+        return $visible;
+    }
+
+    /**
+     * Usage: Auth()->user()->isVerified() (boolean)
+     *
+     * @return boolean
+     */
+    public function isVerified()
+    {
+        $verified = false;
+        if(isset($this->attributes['email_verified_at'])) {
+            $verified = true;
+        }
+        return $verified;
     }
 
     /**
      * Custom User Methods
      *
-     * https://stackoverflow.com/questions/32437384/laravel-custom-user-specific-functions
-     * Use: $var = Auth()->user()->visible();
-     * Use: Custom blade directives
+     * Use: $var = Auth()->user()->hasRole($role);
      */
     public function hasRole($role)
     {

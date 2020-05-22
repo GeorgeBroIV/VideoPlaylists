@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
@@ -18,8 +18,7 @@ class ProfileController extends Controller
      */
     public function __construct()
     {
-// TODO: After roles, permissions, policies and gates are implemented, change middleware to Role
-        $this->middleware('auth');
+        $this->middleware('verified');
     }
     /**
      * View profile view
@@ -28,10 +27,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $visible = Auth()->user()->isVisible();
-        ddd($visible);
         $user = Auth()->user();
-        return view('admin.user.profile', compact('user'));
+
+        return view('profile.index', compact('user'));
     }
 
     /**
@@ -41,7 +39,7 @@ class ProfileController extends Controller
      * @param  ProfileUpdateRequest $request
      * @return RedirectResponse
      */
-    public function updateProfile(ProfileUpdateRequest $request)
+    public function edit(ProfileUpdateRequest $request)
     {
         /* Validation passed if we arrive here */
 
