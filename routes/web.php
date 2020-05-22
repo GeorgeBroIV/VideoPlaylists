@@ -24,6 +24,8 @@
 
         // WebApp authentication (login, redirects, etc)
         Auth::routes(['verify' => true]);
+        Route::get('/email/verify', 'Auth\VerificationController@show')->name('verify');
+
 
         // Home view
         Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');

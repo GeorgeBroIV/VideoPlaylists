@@ -68,6 +68,11 @@
                                 @endif
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @hasRole('Registered')
+                                    <a class="dropdown-item" href="{{ route('verify') }}">
+                                        {{ __('Verify Email') }}
+                                    </a>
+                                @endhasRole
                                 @isVerified
                                     <a class="dropdown-item" href="{{ route('profile') }}">
                                         {{ __('Profile') }}
